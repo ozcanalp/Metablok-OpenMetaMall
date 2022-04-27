@@ -28,7 +28,7 @@ public class PlayerLook : MonoBehaviour
     void Look(Vector2 lookInput)
     {
         cameraRotation = cameraContainerTransform.localEulerAngles;
-        cameraRotation.x += lookInput.y;
+        cameraRotation.x -= lookInput.y;
         cameraRotation.y += lookInput.x;
 
          if (cameraRotation.x < 180 && cameraRotation.x > 0)
