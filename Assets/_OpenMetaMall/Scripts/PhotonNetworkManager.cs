@@ -35,5 +35,6 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Joined Room");
 
         //SpawnCharacter
+        PhotonNetwork.Instantiate("Robot Kyle Variant", Vector3.zero, Quaternion.identity);
     }
 }

@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] PhotonView PV;
     [SerializeField] float movementSpeed = 1f;
     Vector2 movementInput;
     Vector3 movement;
 
-    private void Update() {
-        transform.Translate(movement * Time.deltaTime * movementSpeed);
+    private void Update()
+    {
+        if(PV.IsMine)
+            transform.Translate(movement * Time.deltaTime * movementSpeed);
     }
 
     public void Movement(InputAction.CallbackContext context)
