@@ -13,16 +13,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if(PV.IsMine)
-            transform.Translate(movement * Time.deltaTime * movementSpeed);
+        if (PV.IsMine)
+            Move(movementInput);
     }
 
-    public void Movement(InputAction.CallbackContext context)
+    public void GetMovementInput(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
+    }
 
+    void Move(Vector2 movementInput)
+    {
         movement.x = movementInput.x;
         movement.y = 0;
         movement.z = movementInput.y;
+
+        transform.Translate(movement * Time.deltaTime * movementSpeed);
     }
 }
