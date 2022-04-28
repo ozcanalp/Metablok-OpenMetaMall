@@ -41,7 +41,7 @@ public partial class @MetablokOpenMetaMall : IInputActionCollection2, IDisposabl
                     ""type"": ""Value"",
                     ""id"": ""c626d5b8-b086-4a68-8444-3c623145fbb3"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""InvertVector2"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },

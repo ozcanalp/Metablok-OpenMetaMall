@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerLook : MonoBehaviour
 {
+
     [SerializeField] Transform cameraContainerTransform;
 
     [Range(0, 90)]
     [SerializeField] float verticalCameraLimit = 50;
+    [SerializeField] float lookSpeed = 1f;
 
     Vector3 cameraRotation;
     float cameraRotationX;
@@ -28,16 +30,16 @@ public class PlayerLook : MonoBehaviour
     void Look(Vector2 lookInput)
     {
         cameraRotation = cameraContainerTransform.localEulerAngles;
-        cameraRotation.x -= lookInput.y;
-        cameraRotation.y += lookInput.x;
+        cameraRotation.x -= lookInput.y * lookSpeed;
+        cameraRotation.y += lookInput.x * lookSpeed;
 
-         if (cameraRotation.x < 180 && cameraRotation.x > 0)
+        if (cameraRotation.x < 180 && cameraRotation.x > 0)
         {
-           cameraRotation.x = Mathf.Clamp(cameraRotation.x, 0, verticalCameraLimit);
+            cameraRotation.x = Mathf.Clamp(cameraRotation.x, 0, verticalCameraLimit);
         }
-        else if(cameraRotation.x < 360 && cameraRotation.x > 180)
+        else if (cameraRotation.x < 360 && cameraRotation.x > 180)
         {
-            cameraRotation.x = Mathf.Clamp(cameraRotation.x, 360-verticalCameraLimit, 360);
+            cameraRotation.x = Mathf.Clamp(cameraRotation.x, 360 - verticalCameraLimit, 360);
         }
 
         cameraContainerTransform.localEulerAngles = cameraRotation;
