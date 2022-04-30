@@ -6,23 +6,20 @@ using UnityEngine;
 
 public class PlayerNetworkController : MonoBehaviour
 {
-    PhotonView PV;
-    PlayerMovement playerMovement;
-    CinemachineFreeLook cinemachineFreeLook;
-    Camera cam;
+    [SerializeField] PhotonView PV;
+    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] CinemachineFreeLook cinemachineFreeLook;
+    [SerializeField] Camera cam;
+    [SerializeField] Camera itemInspectorCamera;
 
     void Start()
     {
-        PV = GetComponentInChildren<PhotonView>();
-        playerMovement = GetComponentInChildren<PlayerMovement>();
-        cinemachineFreeLook = GetComponentInChildren<CinemachineFreeLook>();
-        cam = GetComponentInChildren<Camera>();
-
         if (!PV.IsMine)
         {
             playerMovement.enabled = false;
             cinemachineFreeLook.enabled = false;
             cam.enabled = false;
+            itemInspectorCamera.enabled = false;
         }
     }
 

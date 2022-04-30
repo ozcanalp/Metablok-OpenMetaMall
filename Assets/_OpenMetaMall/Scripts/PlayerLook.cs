@@ -1,48 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerLook : MonoBehaviour
 {
+    [SerializeField] PhotonView PV;
+    [SerializeField] GameObject crosshair;
+    [SerializeField] Camera cam;
+    [SerializeField] float interactionDistance = 15;
 
-    [SerializeField] Transform cameraContainerTransform;
+    public event Action<InspectableObject> OnObjectInspect = delegate { };
 
-    [Range(0, 90)]
-    [SerializeField] float verticalCameraLimit = 50;
-    [SerializeField] float lookSpeed = 1f;
+    RaycastHit hitInfo;
 
-    Vector3 cameraRotation;
-    float cameraRotationX;
-    Vector2 lookInput;
-    Vector3 look;
-
-    void Update()
+    public void GetFireInput(InputAction.CallbackContext context)
     {
-        Look(lookInput);
+        if (PV.IsMine)
+        {
+            if (context.performed)
+                ShootRaycast();
+        }
     }
 
-    public void GetLookInput(InputAction.CallbackContext context)
+    void ShootRaycast()
     {
-        lookInput = context.ReadValue<Vector2>();
-    }
-
-    void Look(Vector2 lookInput)
-    {
-        cameraRotation = cameraContainerTransform.localEulerAngles;
-        cameraRotation.x -= lookInput.y * lookSpeed;
-        cameraRotation.y += lookInput.x * lookSpeed;
-
-        if (cameraRotation.x < 180 && cameraRotation.x > 0)
+        Ray ray = cam.ScreenPointToRay(crosshair.transform.position);
+        Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.blue, 1f);
+        if (Physics.Raycast(ray, out hitInfo, interactionDistance))
         {
-            cameraRotation.x = Mathf.Clamp(cameraRotation.x, 0, verticalCameraLimit);
+            InspectableObject hitObject = hitInfo.collider.GetComponent<InspectableObject>();
+            if (hitObject != null)
+            {
+                Debug.Log(hitObject.name);
+                OnObjectInspect(hitObject);
+            }
         }
-        else if (cameraRotation.x < 360 && cameraRotation.x > 180)
-        {
-            cameraRotation.x = Mathf.Clamp(cameraRotation.x, 360 - verticalCameraLimit, 360);
-        }
-
-        cameraContainerTransform.localEulerAngles = cameraRotation;
     }
 
 }
