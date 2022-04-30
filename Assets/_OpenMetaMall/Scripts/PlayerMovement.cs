@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
+using System;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController), typeof(PhotonView))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] PhotonView PV;
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movementInput;
     Vector3 movement;
     Vector3 moveDir;
+
+    public event Action<bool> OnWalking = delegate { };
 
     float turnSmoothVelocity;
 
@@ -51,6 +54,11 @@ public class PlayerMovement : MonoBehaviour
 
             moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             characterController.Move(moveDir.normalized * Time.deltaTime * movementSpeed);
+            OnWalking(true);
+        }
+        else
+        {
+            OnWalking(false);
         }
     }
 }
