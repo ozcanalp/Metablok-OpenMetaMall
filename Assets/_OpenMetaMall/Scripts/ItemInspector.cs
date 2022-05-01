@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class ItemInspector : MonoBehaviour, IDragHandler
+public class ItemInspector : MonoBehaviour
 {
     [SerializeField] PlayerLook playerLook;
     [SerializeField] RenderTexture rt;
     [SerializeField] GameObject itemInspectorBackground;
+    [SerializeField] GameObject dragRotationArea;
 
     GameObject inspectingObject;
     Transform inspectingObjectTransform;
@@ -39,6 +39,8 @@ public class ItemInspector : MonoBehaviour, IDragHandler
         inspectingObjectTransform.parent = transform;
         inspectingObjectTransform.localPosition = Vector3.zero;
         inspectingObject.layer = LayerMask.NameToLayer("InspectingItem");
+
+        dragRotationArea.GetComponent<InspectingObjectRotation>().objectToRotate = inspectingObjectTransform;
     }
 
     public void EndInspectObject()
@@ -47,10 +49,5 @@ public class ItemInspector : MonoBehaviour, IDragHandler
             Destroy(inspectingObject);
         OnItemInspect(true);
         itemInspectorBackground.SetActive(false);
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        inspectingObjectTransform.eulerAngles += new Vector3(eventData.delta.y, -eventData.delta.x);
     }
 }

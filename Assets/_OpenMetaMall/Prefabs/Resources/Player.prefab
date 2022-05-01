@@ -252,6 +252,7 @@ MonoBehaviour:
   playerLook: {fileID: 9139277003933117174}
   rt: {fileID: 8400000, guid: ef13449c05cd3d14bafdbcb30ba62970, type: 2}
   itemInspectorBackground: {fileID: 876992619}
+  dragRotationArea: {fileID: 7689821391739844840}
 --- !u!1 &614408738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,8 +1831,9 @@ GameObject:
   - component: {fileID: 8207679813568952100}
   - component: {fileID: 3627008977845590760}
   - component: {fileID: 1496265385059240475}
+  - component: {fileID: 1666321844}
   m_Layer: 0
-  m_Name: Mask
+  m_Name: Drag Rotation Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1896,6 +1898,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1666321844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7689821391739844840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b1b46cd160a8f344a003eb2e030e46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToRotate: {fileID: 0}
 --- !u!1001 &5915703287105539156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1909,7 +1924,7 @@ PrefabInstance:
       objectReference: {fileID: 3996223785840843064}
     - target: {fileID: 670806260110454652, guid: 2d1b623dee5cd2f49b8e51c8f08f7b54, type: 3}
       propertyPath: sceneViewId
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3228501281284630178, guid: 2d1b623dee5cd2f49b8e51c8f08f7b54, type: 3}
       propertyPath: PV
