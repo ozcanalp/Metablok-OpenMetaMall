@@ -12,6 +12,9 @@ public class PlayerNetworkController : MonoBehaviour
     [SerializeField] Camera cam;
     [SerializeField] Camera itemInspectorCamera;
 
+    [SerializeField] GameObject ThirdPerson;
+    [SerializeField] GameObject VR;
+
     void Start()
     {
         if (!PV.IsMine)
@@ -20,6 +23,14 @@ public class PlayerNetworkController : MonoBehaviour
             cinemachineFreeLook.enabled = false;
             cam.enabled = false;
             itemInspectorCamera.enabled = false;
+
+            VR.SetActive(false);
+        }
+        else
+        {
+            #if UNITY_EDITOR
+            ThirdPerson.SetActive(false);
+            #endif
         }
     }
 

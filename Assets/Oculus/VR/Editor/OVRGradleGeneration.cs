@@ -103,6 +103,7 @@ public class OVRGradleGeneration
 
 		// OpenXR Plugin will remove all native plugins if they are not under the Feature folder. Include OVRPlugin to the build if OculusXRFeature is enabled.
 		var oculusXRFeature = FeatureHelpers.GetFeatureWithIdForBuildTarget(report.summary.platformGroup, Oculus.XR.OculusXRFeature.featureId);
+		if(oculusXRFeature != null){
 		if (oculusXRFeature.enabled)
 		{
 			if (!useOpenXR)
@@ -137,7 +138,7 @@ public class OVRGradleGeneration
 			UnityEngine.Debug.LogWarning("OculusXRFeature is not enabled in OpenXR Settings. Oculus Integration scripts will not be functional.");
 		}
 #endif
-
+		}
 #if UNITY_ANDROID && !(USING_XR_SDK && UNITY_2019_3_OR_NEWER)
 		// Generate error when Vulkan is selected as the perferred graphics API, which is not currently supported in Unity XR
 		if (!PlayerSettings.GetUseDefaultGraphicsAPIs(BuildTarget.Android))
