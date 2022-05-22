@@ -24,13 +24,17 @@ public class PlayerNetworkController : MonoBehaviour
             cam.enabled = false;
             itemInspectorCamera.enabled = false;
 
-            VR.SetActive(false);
+            ThirdPerson.SetActive(true);
         }
         else
         {
-            #if UNITY_EDITOR
-            ThirdPerson.SetActive(false);
-            #endif
+
+#if UNITY_EDITOR
+            VR.SetActive(true);
+
+#elif UNITY_WEBGL
+            ThirdPerson.SetActive(true);
+#endif
         }
     }
 

@@ -16,6 +16,12 @@ public class PlayerLook : MonoBehaviour
 
     RaycastHit hitInfo;
 
+    private void Reset()
+    {
+        PV = GetComponent<PhotonView>();
+        cam = GetComponentInChildren<Camera>();
+    }
+
     public void GetFireInput(InputAction.CallbackContext context)
     {
         if (PV.IsMine)
