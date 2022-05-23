@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerMovement), typeof(PlayerLook))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] ItemInspector itemInspector;
@@ -11,6 +12,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerLook playerLook;
     [SerializeField] CinemachineInputProvider cinemachineInputProvider;
 
+    private void Reset()
+    {
+        itemInspector = GetComponentInChildren<ItemInspector>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerLook = GetComponent<PlayerLook>();
+        cinemachineInputProvider = GetComponentInChildren<CinemachineInputProvider>();
+    }
+
+    private void Start()
+    {
+        Reset();
+    }
 
     private void OnEnable()
     {
