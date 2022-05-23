@@ -15,8 +15,13 @@ public class PlayerNetworkController : MonoBehaviour
     [SerializeField] GameObject ThirdPerson;
     [SerializeField] GameObject VR;
 
-    void Start()
+    IEnumerator Start()
     {
+        VR.SetActive(false);
+        ThirdPerson.SetActive(false);
+
+        yield return new WaitForSeconds(1);
+
         if (!PV.IsMine)
         {
             playerMovement.enabled = false;
