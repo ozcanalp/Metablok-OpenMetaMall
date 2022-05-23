@@ -7,6 +7,8 @@ using System;
 
 public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] Transform spawnPosition;
+
     void Start()
     {
         ConnectToMasterServer();
@@ -35,6 +37,6 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Joined Room");
 
         //SpawnCharacter
-        PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate("Player", spawnPosition.position, spawnPosition.rotation);
     }
 }
