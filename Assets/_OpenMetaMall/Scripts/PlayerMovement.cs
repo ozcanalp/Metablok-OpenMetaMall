@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movementInput;
     Vector3 movement;
     Vector3 moveDir;
+    Vector3 gravity = Physics.gravity;
 
     public event Action<bool> OnWalking = delegate { };
 
@@ -44,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
     void Move(Vector2 movementInput)
     {
         movement.x = movementInput.x;
-        movement.y = 0;
         movement.z = movementInput.y;
 
         if (movement.magnitude > 0.1f)
@@ -52,9 +52,9 @@ public class PlayerMovement : MonoBehaviour
             float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             playerTransform.rotation = Quaternion.Euler(0f, angle, 0f);
-
             moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            characterController.Move(moveDir.normalized * Time.deltaTime * movementSpeed);
+
+            characterController.Move((moveDir.normalized + gravity) * Time.deltaTime * movementSpeed);
             OnWalking(true);
         }
         else
