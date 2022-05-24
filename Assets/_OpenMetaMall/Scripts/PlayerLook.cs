@@ -10,7 +10,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] PhotonView PV;
     [SerializeField] GameObject crosshair;
     [SerializeField] Camera cam;
-    [SerializeField] float interactionDistance = 15;
+    [SerializeField] float interactionDistance = 10f;
 
     public event Action<InspectableObject> OnObjectInspect = delegate { };
 
