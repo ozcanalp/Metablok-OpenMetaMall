@@ -11,12 +11,15 @@ public class PlayerNetworkController : MonoBehaviour
     [SerializeField] CinemachineFreeLook cinemachineFreeLook;
     [SerializeField] Camera cam;
     [SerializeField] Camera itemInspectorCamera;
+    CharacterController characterController;
 
     [SerializeField] GameObject ThirdPerson;
     [SerializeField] GameObject VR;
 
     IEnumerator Start()
     {
+        characterController = GetComponent<CharacterController>();
+
         VR.SetActive(false);
         ThirdPerson.SetActive(false);
 
@@ -28,6 +31,7 @@ public class PlayerNetworkController : MonoBehaviour
             cinemachineFreeLook.enabled = false;
             cam.enabled = false;
             itemInspectorCamera.enabled = false;
+            characterController.enabled = false;
 
             ThirdPerson.SetActive(true);
         }
@@ -35,6 +39,7 @@ public class PlayerNetworkController : MonoBehaviour
         {
 
 #if UNITY_EDITOR
+            characterController.enabled = false;
             VR.SetActive(true);
 
 #elif UNITY_WEBGL
