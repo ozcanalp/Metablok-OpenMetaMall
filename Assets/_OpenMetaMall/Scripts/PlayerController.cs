@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ItemInspector itemInspector;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerLook playerLook;
+    [SerializeField] Canvas playerHud;
     [SerializeField] CinemachineInputProvider cinemachineInputProvider;
 
     private void Reset()
@@ -44,12 +45,14 @@ public class PlayerController : MonoBehaviour
             playerMovement.enabled = false;
             playerLook.enabled = false;
             cinemachineInputProvider.enabled = false;
+            playerHud.enabled = false;
         }
         else
         {
             playerMovement.enabled = true;
             playerLook.enabled = true;
             cinemachineInputProvider.enabled = true;
+            playerHud.enabled = true;
         }
     }
 }
