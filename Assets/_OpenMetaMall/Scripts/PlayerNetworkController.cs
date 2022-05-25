@@ -31,7 +31,6 @@ public class PlayerNetworkController : MonoBehaviour
             cinemachineFreeLook.enabled = false;
             cam.enabled = false;
             itemInspectorCamera.enabled = false;
-            characterController.enabled = false;
 
             ThirdPerson.SetActive(true);
         }
@@ -39,6 +38,7 @@ public class PlayerNetworkController : MonoBehaviour
         {
 
 #if UNITY_EDITOR
+            yield return new WaitForSeconds(2);
             characterController.enabled = false;
             VR.SetActive(true);
 

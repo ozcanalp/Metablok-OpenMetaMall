@@ -3458,7 +3458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3996223784888852971
 Transform:
   m_ObjectHideFlags: 0
@@ -4207,7 +4207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 1796227210}
-  playerTransform: {fileID: 8387268405862070982}
+  playerTransform: {fileID: 3996223784888852971}
   camTransform: {fileID: 3996223785840843064}
   movementSpeed: 3
   turnSmoothTime: 0.1
