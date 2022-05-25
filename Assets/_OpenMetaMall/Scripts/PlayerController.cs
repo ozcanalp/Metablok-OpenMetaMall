@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         if (!obj)
         {
             playerMovement.enabled = false;
+            playerLook.currentlyInspecting = true;
             playerLook.enabled = false;
             cinemachineInputProvider.enabled = false;
             playerHud.enabled = false;
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             playerMovement.enabled = true;
+            playerLook.currentlyInspecting = false;
             playerLook.enabled = true;
             cinemachineInputProvider.enabled = true;
             playerHud.enabled = true;

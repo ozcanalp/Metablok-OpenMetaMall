@@ -12,6 +12,8 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] Camera cam;
     [SerializeField] float interactionDistance = 10f;
 
+    public bool currentlyInspecting = false;
+
     public event Action<InspectableObject> OnObjectInspect = delegate { };
 
     RaycastHit hitInfo;
@@ -33,6 +35,9 @@ public class PlayerLook : MonoBehaviour
 
     void ShootRaycast()
     {
+        if(currentlyInspecting == true)
+            return;
+
         Ray ray = cam.ScreenPointToRay(crosshair.transform.position);
         Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.blue, 1f);
         if (Physics.Raycast(ray, out hitInfo, interactionDistance))
