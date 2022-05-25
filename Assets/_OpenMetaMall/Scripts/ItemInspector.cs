@@ -27,6 +27,8 @@ public class ItemInspector : MonoBehaviour
 
     private void StartInspectObject(InspectableObject obj)
     {
+        GameManager.Instance.ShowCursor();
+
         OnItemInspect(false);
 
         itemInspectorBackground.SetActive(true);
@@ -49,5 +51,7 @@ public class ItemInspector : MonoBehaviour
             Destroy(inspectingObject);
         OnItemInspect(true);
         itemInspectorBackground.SetActive(false);
+
+        GameManager.Instance.HideCursor();
     }
 }
