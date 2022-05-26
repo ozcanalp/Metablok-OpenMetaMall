@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 950188921, guid: 9a9f8a0dad25e754b909c43c011ff18a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1796227210, guid: 9a9f8a0dad25e754b909c43c011ff18a, type: 3}
       propertyPath: sceneViewId
       value: 1
@@ -140,6 +144,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3996223784888852968, guid: 9a9f8a0dad25e754b909c43c011ff18a, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996223784888852970, guid: 9a9f8a0dad25e754b909c43c011ff18a, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3996223784888852971, guid: 9a9f8a0dad25e754b909c43c011ff18a, type: 3}
@@ -185,6 +193,10 @@ PrefabInstance:
     - target: {fileID: 3996223784888852971, guid: 9a9f8a0dad25e754b909c43c011ff18a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965442233372941877, guid: 9a9f8a0dad25e754b909c43c011ff18a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9f8a0dad25e754b909c43c011ff18a, type: 3}
@@ -683,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 153665041194054479, guid: 16b0b20cd5b28ba4cab5c93e3d2b6c8f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16b0b20cd5b28ba4cab5c93e3d2b6c8f, type: 3}
@@ -714,6 +726,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 783055483}
+    - target: {fileID: 198755867, guid: 1c2db6529ed9d9f48a7af4a9d694e433, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 783055483}
     - target: {fileID: 208573674, guid: 1c2db6529ed9d9f48a7af4a9d694e433, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -735,6 +751,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 783055483}
     - target: {fileID: 464484873, guid: 1c2db6529ed9d9f48a7af4a9d694e433, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 783055483}
+    - target: {fileID: 554618132, guid: 1c2db6529ed9d9f48a7af4a9d694e433, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 783055483}
