@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7125085, g: 0.7099727, b: 0.7099727, a: 0.5}
+  m_IndirectSpecularColor: {r: 0.46600854, g: 0.46232185, b: 0.46232185, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15067,6 +15067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c4e31054241204f9dbc450f4fcec1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   anim: {fileID: 0}
 --- !u!1 &703526346
 GameObject:
@@ -22056,6 +22057,7 @@ MonoBehaviour:
   modelInfoPanel: {fileID: 0}
   facialAnimatorController: {fileID: 9100000, guid: 743459fc6e9104447930f556fe8b080b, type: 2}
   fullbodyAnimatorsHolder: {fileID: 1042361796}
+  sceneToLoad: Environment
 --- !u!1 &1044036757
 GameObject:
   m_ObjectHideFlags: 0

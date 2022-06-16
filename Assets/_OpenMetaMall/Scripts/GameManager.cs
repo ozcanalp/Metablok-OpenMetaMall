@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        HideCursor();
+        //HideCursor();
     }
 
     public void HideCursor()
