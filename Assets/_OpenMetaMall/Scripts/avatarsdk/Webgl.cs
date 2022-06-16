@@ -77,8 +77,8 @@ namespace MetaMall.AvatarSdk.Cloud
 		{
 #if !UNITY_EDITOR
 #if UNITY_WEBGL
-			urlInput.gameObject.SetActive(false);
-			urlButton.gameObject.SetActive(true);
+			/* urlInput.gameObject.SetActive(false);
+			urlButton.gameObject.SetActive(true); */
 			HorizontalLayoutGroup browsePanelLayout = browsePanel.GetComponentInChildren<HorizontalLayoutGroup>();
 			browsePanelLayout.childControlWidth = true;
 #else
