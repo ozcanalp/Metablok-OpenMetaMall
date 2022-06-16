@@ -18635,6 +18635,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871788009}
   m_CullTransparentMesh: 0
+--- !u!1 &876908965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876908967}
+  - component: {fileID: 876908966}
+  - component: {fileID: 876908968}
+  m_Layer: 0
+  m_Name: ReactApi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &876908966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876908965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f18548b3ba39ab41bf6fc44561de3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: {fileID: 554466701}
+--- !u!4 &876908967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876908965}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &876908968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876908965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e8b89e6943c2a45af8e872296abbaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: {fileID: 554466701}
+  checkPlugConnectionBtn: {fileID: 1872591583}
+  connectPlugWalletBtn: {fileID: 0}
+  getNftsBtn: {fileID: 0}
+  accountInputField: {fileID: 0}
+  amountInputField: {fileID: 0}
+  payBtn: {fileID: 0}
 --- !u!1 &879785592
 GameObject:
   m_ObjectHideFlags: 0
@@ -39731,20 +39796,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1872591584}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1042361797}
-        m_TargetAssemblyTypeName: ItSeez3D.AvatarSdkSamples.Core.MyFullbodyParameters,
-          Assembly-CSharp
-        m_MethodName: OnEnterToMetaMallClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1872591584
 MonoBehaviour:
   m_ObjectHideFlags: 0

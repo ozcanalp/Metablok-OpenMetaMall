@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using itSeez3D.Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ReactApi : MonoBehaviour
 {
-    public TMP_Text label;
+    public Text label;
     
     private Dictionary<int, System.Action<string>> cbDict = new Dictionary<int, Action<string>>();
     private int cbIndex;

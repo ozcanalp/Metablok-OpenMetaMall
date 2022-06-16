@@ -2,10 +2,11 @@ using itSeez3D.Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WalletUI : MonoBehaviour
 {
-    public TMP_Text label;
+    public Text label;
 
     public Button checkPlugConnectionBtn;
     public Button connectPlugWalletBtn;
@@ -14,6 +15,8 @@ public class WalletUI : MonoBehaviour
     public TMP_InputField accountInputField;
     public TMP_InputField amountInputField;
     public Button payBtn;
+
+    [SerializeField] string sceneToLoad = "Environment";
 
     void Start()
     {
@@ -27,7 +30,7 @@ public class WalletUI : MonoBehaviour
     {
         checkPlugConnectionBtn.onClick.RemoveListener(CheckConnection);
         connectPlugWalletBtn.onClick.RemoveListener(RequestConnection);
-        getNftsBtn.onClick.RemoveListener(GetNfts);    
+        getNftsBtn.onClick.RemoveListener(GetNfts);
     }
 
     void CheckConnection()
@@ -41,27 +44,30 @@ public class WalletUI : MonoBehaviour
         Debug.Log("OnCheckConnection:" + jsonData);
 
         var response = JsonConvert.DeserializeObject<CheckPlugConnectionResponse>(jsonData);
-        if (response == null) 
+        if (response == null)
         {
             Debug.LogError("Unable to parse CheckPlugConnectionResponse -- make sure you are running the project as a WebGL build in browser");
+            SceneManager.LoadScene(sceneToLoad);
             return;
         }
 
         label.text = "Checked Plug Connection with response of: " + (response.result ? "Connected" : "Not Connected");
+
+        SceneManager.LoadScene(sceneToLoad);
     }
-    
+
     void RequestConnection()
     {
         label.text = "Loading...";
         ReactApi.Instance.RequestPlugConnect(OnRequestConnection);
     }
-    
+
     void OnRequestConnection(string jsonData)
     {
         Debug.Log("OnRequestConnection:" + jsonData);
 
         var response = JsonConvert.DeserializeObject<RequestPlugConnectResponse>(jsonData);
-        if (response == null) 
+        if (response == null)
         {
             Debug.LogError("Unable to parse RequestPlugConnectResponse -- make sure you are running the project as a WebGL build in browser");
             return;
@@ -69,7 +75,7 @@ public class WalletUI : MonoBehaviour
 
         label.text = "Requested Plug Connection with response of: " + response.result;
     }
-    
+
     void GetNfts()
     {
         label.text = "Loading...";
@@ -81,7 +87,7 @@ public class WalletUI : MonoBehaviour
         Debug.Log("OnGetNfts:" + jsonData);
 
         var response = JsonConvert.DeserializeObject<GetDabNftsResponse>(jsonData);
-        if (response == null) 
+        if (response == null)
         {
             Debug.LogError("Unable to parse GetDabNftsResponse -- make sure you are running the project as a WebGL build in browser");
             return;
@@ -103,7 +109,7 @@ public class WalletUI : MonoBehaviour
         label.text = "Loading...";
 
         string account = accountInputField.text;
-        float  amount = float.Parse(amountInputField.text);
+        float amount = float.Parse(amountInputField.text);
 
         Debug.Log("Account:" + account + " amount:" + amount);
 
