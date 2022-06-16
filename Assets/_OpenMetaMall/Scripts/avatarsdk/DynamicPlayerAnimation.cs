@@ -8,21 +8,21 @@ public class DynamicPlayerAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    // [SerializeField] Animator anim;
+    public Animator animator = null;
     public FullbodyAnimationManager anim;
 
     private void OnEnable()
     {
-        if(GetComponent<PlayerMovement>() != null)
+        if (GetComponent<PlayerMovement>() != null)
         {
             GetComponent<PlayerMovement>().OnWalking += MovementAnimation;
         }
@@ -38,21 +38,29 @@ public class DynamicPlayerAnimation : MonoBehaviour
 
     private void MovementAnimation(bool isWalking)
     {
-        // anim.SetBool("IsWalking", isWalking);
-        if(isWalking)
+        if (animator == null)
         {
-            // Debug.Log("IsWalking: " + isWalking);
-            anim.PlayAnimationByName("Walking");
+                if (anim != null && anim.gameObject.TryGetComponent<Animator>(out animator) == false)
+                    return;
+        }
+        else
+        {
+            animator.SetBool("Walking", isWalking);
+            /* if(isWalking)
+            {
+                // Debug.Log("IsWalking: " + isWalking);
+                anim.PlayAnimationByName("Walking");
+            } */
         }
     }
 
     public void PlayFacialAnimation()
     {
         // anim.SetBool("IsWalking", isWalking);
-        
+
         Debug.Log("AAAAA");
         anim.PlayCurrentAnimation();
         //    anim.PlayAnimationByName("Walking");
-        
+
     }
 }

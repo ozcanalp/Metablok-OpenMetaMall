@@ -65,9 +65,10 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 		private readonly string emptyOutfitName = "no outfit";
 
 		private GameObject avatarHolder;
+        [SerializeField] string sceneToLoad = "Environment";
 
-		#region public methods
-		public MyFullbodyParameters()
+        #region public methods
+        public MyFullbodyParameters()
 		{
 			selectedPipelineType = PipelineType.FIT_PERSON;
 		}
@@ -284,6 +285,9 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 			}
 					
 			avatarHolder.GetComponent<DynamicPlayerAnimation>().anim = avatarLoader.AvatarGameObject.GetComponent<FullbodyAnimationManager>();
+			
+			avatarHolder.GetComponent<DynamicPlayerAnimation>().animator = avatarLoader.AvatarGameObject.GetComponent<Animator>();
+			
 			isAvatarDisplayed = true;
 		}
 
@@ -378,7 +382,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 		public void OnEnterToMetaMallClick()
 		{
 			avatarProvider.Dispose();
-			SceneManager.LoadScene("WebGL");
+			SceneManager.LoadScene(sceneToLoad);
 		}
 
 		#endregion
