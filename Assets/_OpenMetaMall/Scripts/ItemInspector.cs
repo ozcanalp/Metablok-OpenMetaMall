@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ItemInspector : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ItemInspector : MonoBehaviour
     [SerializeField] RenderTexture rt;
     [SerializeField] GameObject itemInspectorBackground;
     [SerializeField] GameObject dragRotationArea;
+    [SerializeField] TextMeshProUGUI itemPriceText;
 
     GameObject inspectingObject;
     Transform inspectingObjectTransform;
@@ -30,6 +32,8 @@ public class ItemInspector : MonoBehaviour
         GameManager.Instance.ShowCursor();
 
         OnItemInspect(false);
+
+        itemPriceText.SetText(UnityEngine.Random.Range(20, 30).ToString());
 
         itemInspectorBackground.SetActive(true);
 
