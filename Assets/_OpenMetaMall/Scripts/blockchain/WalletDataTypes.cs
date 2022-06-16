@@ -5,7 +5,7 @@ using UnityEngine.Scripting;
 public class CallbackResponse
 {
     [Preserve] public int cbIndex;
-    [Preserve] public string error;
+    [Preserve] public string result;
 }
 
 [Preserve]
@@ -17,7 +17,7 @@ public class RequestPlugConnectResponse
 [Preserve]
 public class CheckPlugConnectionResponse
 {
-    [Preserve] public bool result;
+    [Preserve] public string result;
 }
 
 [Preserve]
@@ -53,6 +53,6 @@ public class DabNftDetails
 [Preserve]
 public class PayResponse
 {
-    [Preserve] public bool result;
+    [Preserve] public string result;
     [Preserve] public string data;
 }

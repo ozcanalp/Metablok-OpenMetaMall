@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class WalletUI : MonoBehaviour
 {
-    public Text label;
+    public TMP_Text label;
 
     public Button checkPlugConnectionBtn;
     public Button connectPlugWalletBtn;
@@ -47,13 +47,13 @@ public class WalletUI : MonoBehaviour
         if (response == null)
         {
             Debug.LogError("Unable to parse CheckPlugConnectionResponse -- make sure you are running the project as a WebGL build in browser");
-            SceneManager.LoadScene(sceneToLoad);
+            //SceneManager.LoadScene(sceneToLoad);
             return;
         }
 
-        label.text = "Checked Plug Connection with response of: " + (response.result ? "Connected" : "Not Connected");
+        label.text = "Checked Plug Connection with response of: " + (response.result);
 
-        SceneManager.LoadScene(sceneToLoad);
+        //SceneManager.LoadScene(sceneToLoad);
     }
 
     void RequestConnection()
