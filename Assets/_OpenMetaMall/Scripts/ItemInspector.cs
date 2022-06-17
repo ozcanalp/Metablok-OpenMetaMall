@@ -44,7 +44,9 @@ public class ItemInspector : MonoBehaviour
         inspectingObjectTransform = inspectingObject.transform;
         inspectingObjectTransform.parent = transform;
         inspectingObjectTransform.localPosition = Vector3.zero;
-        inspectingObject.layer = LayerMask.NameToLayer("InspectingItem");
+
+        //inspectingObject.layer = LayerMask.NameToLayer("InspectingItem");
+        SetLayerRecursively(inspectingObject, LayerMask.NameToLayer("InspectingItem"));
 
         dragRotationArea.GetComponent<InspectingObjectRotation>().objectToRotate = inspectingObjectTransform;
     }
@@ -57,5 +59,15 @@ public class ItemInspector : MonoBehaviour
         itemInspectorBackground.SetActive(false);
 
         GameManager.Instance.HideCursor();
+    }
+
+    public void SetLayerRecursively(GameObject obj, int layer)
+    {
+        obj.layer = layer;
+
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, layer);
+        }
     }
 }
