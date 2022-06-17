@@ -4,9 +4,6 @@ using System.Runtime.InteropServices;
 public class BlockChainConnect : MonoBehaviour {
 
     [DllImport("__Internal")]
-    private static extern void Loaded();
-
-    [DllImport("__Internal")]
     public static extern void RequestPlugConnect(int cbIndex);
 
     /* 
@@ -19,8 +16,7 @@ public class BlockChainConnect : MonoBehaviour {
     void Start() {
 
         Debug.Log("Block Chain Connect Start");
-        Loaded();
-
+        
         /* Hello();
         
         HelloString("This is a string.");
@@ -39,6 +35,5 @@ public class BlockChainConnect : MonoBehaviour {
 
     public void Call_Loaded()
     {
-        Loaded();
     }
 }
