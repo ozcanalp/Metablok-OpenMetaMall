@@ -20,17 +20,49 @@ public class WalletUI : MonoBehaviour
 
     void Start()
     {
-        checkPlugConnectionBtn.onClick.AddListener(CheckConnection);
-        connectPlugWalletBtn.onClick.AddListener(RequestConnection);
-        getNftsBtn.onClick.AddListener(GetNfts);
-        payBtn.onClick.AddListener(Pay);
+        if (checkPlugConnectionBtn != null)
+        {
+            checkPlugConnectionBtn.onClick.AddListener(CheckConnection);
+        }
+
+        if (connectPlugWalletBtn != null)
+        {
+            connectPlugWalletBtn.onClick.AddListener(RequestConnection);
+
+        }
+
+        if (getNftsBtn != null)
+        {
+            getNftsBtn.onClick.AddListener(GetNfts);
+        }
+
+        if (payBtn != null)
+        {
+            payBtn.onClick.AddListener(Pay);
+        }
+
     }
 
     void OnDestroy()
     {
-        checkPlugConnectionBtn.onClick.RemoveListener(CheckConnection);
-        connectPlugWalletBtn.onClick.RemoveListener(RequestConnection);
-        getNftsBtn.onClick.RemoveListener(GetNfts);
+        if (checkPlugConnectionBtn != null)
+        {
+            checkPlugConnectionBtn.onClick.RemoveListener(CheckConnection);
+        }
+        if (connectPlugWalletBtn != null)
+        {
+            connectPlugWalletBtn.onClick.RemoveListener(RequestConnection);
+        }
+
+        if (getNftsBtn != null)
+        {
+            getNftsBtn.onClick.RemoveListener(GetNfts);
+        }
+
+        if(payBtn != null)
+        {
+            payBtn.onClick.RemoveListener(Pay);
+        }
     }
 
     void CheckConnection()
@@ -47,13 +79,13 @@ public class WalletUI : MonoBehaviour
         if (response == null)
         {
             Debug.LogError("Unable to parse CheckPlugConnectionResponse -- make sure you are running the project as a WebGL build in browser");
-            //SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene(sceneToLoad);
             return;
         }
 
         label.text = "Checked Plug Connection with response of: " + (response.result);
 
-        //SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     void RequestConnection()

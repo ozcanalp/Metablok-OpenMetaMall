@@ -18,6 +18,7 @@ using UnityEngine.UI;
 using System.IO;
 using ItSeez3D.AvatarSdkSamples.SamplePipelineTraits;
 using ItSeez3D.AvatarSdkSamples.Core.WebCamera;
+using TMPro;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -34,7 +35,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 
 		#region UI
 		public GameObject sampleDescriptionPanel;
-		public Text progressText;
+		public TMP_Text progressText;
 		public Selectable[] controls;
 		public Button generateHaircutButton;
 		public Image photoPreview;

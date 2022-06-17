@@ -75,16 +75,16 @@ namespace MetaMall.AvatarSdk.Cloud
 
 		void Start()
 		{
-#if !UNITY_EDITOR
-#if UNITY_WEBGL
-			/* urlInput.gameObject.SetActive(false);
-			urlButton.gameObject.SetActive(true); */
-			HorizontalLayoutGroup browsePanelLayout = browsePanel.GetComponentInChildren<HorizontalLayoutGroup>();
-			browsePanelLayout.childControlWidth = true;
-#else
-			browsePanel.SetActive(false);
-#endif
-#endif
+//#if !UNITY_EDITOR
+//#if UNITY_WEBGL
+//			urlInput.gameObject.SetActive(false);
+//			urlButton.gameObject.SetActive(true);
+//			HorizontalLayoutGroup browsePanelLayout = browsePanel.GetComponentInChildren<HorizontalLayoutGroup>();
+//			browsePanelLayout.childControlWidth = true;
+//#else
+//			browsePanel.SetActive(false);
+//#endif
+//#endif
 
 			fileBrowser.fileHandler = HandleUploadedImage;
 			StartCoroutine(Initialize());

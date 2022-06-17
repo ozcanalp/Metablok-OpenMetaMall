@@ -14,6 +14,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using TMPro;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -85,7 +86,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 		/// <summary>
 		/// Check compatibility with the current platform. Little helper just to share code between samples.
 		/// </summary>
-		public static bool CheckIfSupported(Text statusText, GameObject[] uiElements, SdkType sdkType)
+		public static bool CheckIfSupported(TMP_Text statusText, GameObject[] uiElements, SdkType sdkType)
 		{
 			string errorMessage = null;
 			if (!CoreTools.IsPlatformSupported(sdkType, out errorMessage))
