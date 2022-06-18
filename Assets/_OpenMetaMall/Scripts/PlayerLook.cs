@@ -10,11 +10,10 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] PhotonView PV;
     [SerializeField] GameObject crosshair;
     [SerializeField] Camera cam;
+    [SerializeField] ItemInspector itemInspector;
     [SerializeField] float interactionDistance = 10f;
 
     public bool currentlyInspecting = false;
-
-    public event Action<InspectableObject> OnObjectInspect = delegate { };
 
     RaycastHit hitInfo;
 
@@ -46,7 +45,7 @@ public class PlayerLook : MonoBehaviour
             if (hitObject != null)
             {
                 Debug.Log(hitObject.name);
-                OnObjectInspect(hitObject);
+                itemInspector.StartInspectObject(hitObject);
             }
         }
     }

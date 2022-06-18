@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ItemInspector itemInspector;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerLook playerLook;
-    [SerializeField] Canvas playerHud;
     [SerializeField] CinemachineInputProvider cinemachineInputProvider;
+    [SerializeField] Canvas playerHud;
 
     private void Reset()
     {
