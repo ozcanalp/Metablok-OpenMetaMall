@@ -1,3 +1,4 @@
+using ItSeez3D.AvatarSdkSamples.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,29 @@ using UnityEngine;
 public class BugFinder : MonoBehaviour
 {
     public GameObject customPlayer;
-    public GameObject customThirdPerson;
+    public GameObject dynamicPlayer;
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called before the first frame update
+    void Awake()
     {
-        Debug.Log("customAvatar status:" + customPlayer.activeSelf);
-        Debug.Log("customAvatar-PlayerInput status:" + customThirdPerson.GetComponent<UnityEngine.InputSystem.PlayerInput>().enabled);
+        Debug.Log("BUGFINDER: status:" + customPlayer.activeSelf);
+        
 
-        customThirdPerson.GetComponent<UnityEngine.InputSystem.PlayerInput>().enabled = true;
+        if (MyGettingStarted.initParams != null)
+        {
+            Debug.Log("BUGFINDER status:" + MyGettingStarted.initParams.avatarCode);
 
-        Debug.Log("customAvatar-PlayerInput status:" + customThirdPerson.GetComponent<UnityEngine.InputSystem.PlayerInput>().enabled);
+            if (MyGettingStarted.initParams.isCustomPlayer)
+            {
+                dynamicPlayer.SetActive(false);
+            } else
+            {
+                customPlayer.SetActive(false);
+            }
+            Debug.Log("BUGFINDER: set players");
+        }
+
+        Debug.Log("BUGFINDER: Start end");
     }
 
     // Update is called once per frame

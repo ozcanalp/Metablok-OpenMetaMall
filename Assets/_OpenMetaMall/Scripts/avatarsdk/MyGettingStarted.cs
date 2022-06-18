@@ -39,7 +39,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 		};
 
 		// Parameters needed to initialize scene and show avatar. Should be set before the scene loading
-		protected static SceneParams initParams = null;
+		public static SceneParams initParams = null;
 
 		public static void SetSceneParams(SceneParams sceneParams)
         {
