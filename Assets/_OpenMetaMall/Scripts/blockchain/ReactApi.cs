@@ -23,7 +23,6 @@ public class ReactApi : MonoBehaviour
         label.text = label.text + " " +jsonData;
 
         var response = JsonUtility.FromJson<CallbackResponse>(jsonData);
-        // var response = JsonConvert.DeserializeObject<CallbackResponse>(jsonData);
         if (response == null) 
         {
             Debug.Log("Unable to parse JSON cbIndex. There must be no callback");
@@ -31,16 +30,6 @@ public class ReactApi : MonoBehaviour
         }
 
         label.text += response.result;
-
-        // Debug.Log("HandleCallback: result:" + response.result);
-
-        /* if ("true".Equals(response.result) || "allowed".Equals(response.result))
-        {
-            label.text = response.result;
-            return;
-        }*/
-
-        Debug.Log("HandleCallback: result:" + response.result);
 
         if (!cbDict.ContainsKey(response.cbIndex))
         {

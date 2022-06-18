@@ -13,6 +13,7 @@ public class ItemInspector : MonoBehaviour
     [SerializeField] GameObject dragRotationArea;
     [SerializeField] TextMeshProUGUI itemPriceText;
     [SerializeField] Button btn_Try;
+    [SerializeField] TMP_Text progressText;
 
     GameObject inspectingObject;
     Transform inspectingObjectTransform;
@@ -67,6 +68,8 @@ public class ItemInspector : MonoBehaviour
             Destroy(inspectingObject);
         OnItemInspect(true);
         itemInspectorBackground.SetActive(false);
+
+        progressText.text = "";
 
         GameManager.Instance.HideCursor();
     }

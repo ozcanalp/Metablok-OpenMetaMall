@@ -185,7 +185,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
             }
 
             if ((SceneManager.GetActiveScene().name == "Environment") 
-			&& initParams.isCustomPlayer)
+			&& initParams != null && initParams.isCustomPlayer)
             {
 				Debug.Log("activate custom player");
                 customPlayer.SetActive(true);

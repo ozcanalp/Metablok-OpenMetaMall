@@ -13,7 +13,8 @@ public class WalletUI : MonoBehaviour
 
     public TMP_InputField accountInputField;
     public TMP_InputField amountInputField;
-    public Button payBtn;
+    public Button payBtnForCustomPlayer;
+    public Button payBtnForDynamicPlayer;
 
     [SerializeField] string sceneToLoad = "Environment";
 
@@ -34,11 +35,15 @@ public class WalletUI : MonoBehaviour
             getNftsBtn.onClick.AddListener(GetNfts);
         }
 
-        if (payBtn != null)
+        // there is two buy button on scene. One in Dynamic Player and other in Custom Player
+        if (payBtnForCustomPlayer != null)
         {
-            payBtn.onClick.AddListener(Pay);
+            payBtnForCustomPlayer.onClick.AddListener(Pay);
         }
-
+        if (payBtnForDynamicPlayer != null)
+        {
+            payBtnForDynamicPlayer.onClick.AddListener(Pay);
+        }
     }
 
     void OnDestroy()
@@ -57,9 +62,13 @@ public class WalletUI : MonoBehaviour
             getNftsBtn.onClick.RemoveListener(GetNfts);
         }
 
-        if (payBtn != null)
+        if (payBtnForCustomPlayer != null)
         {
-            payBtn.onClick.RemoveListener(Pay);
+            payBtnForCustomPlayer.onClick.RemoveListener(Pay);
+        }
+        if (payBtnForDynamicPlayer != null)
+        {
+            payBtnForDynamicPlayer.onClick.AddListener(Pay);
         }
     }
 
@@ -163,6 +172,6 @@ public class WalletUI : MonoBehaviour
             return;
         }
 
-        label.text = response.data;
+        label.text = response.result + " " + response.error;
     }
 }

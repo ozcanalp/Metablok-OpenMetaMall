@@ -54,5 +54,5 @@ public class DabNftDetails
 public class PayResponse
 {
     [Preserve] public string result;
-    [Preserve] public string data;
+    [Preserve] public string error;
 }
