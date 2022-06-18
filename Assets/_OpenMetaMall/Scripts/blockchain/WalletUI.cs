@@ -139,8 +139,8 @@ public class WalletUI : MonoBehaviour
     {
         label.text = "Loading...";
 
-        string account = accountInputField.text;
-        float amount = float.Parse(amountInputField.text);
+        string account = "dummy"; //accountInputField.text;
+        float amount = 0.1f; //float.Parse(amountInputField.text);
 
         Debug.Log("Account:" + account + " amount:" + amount);
 
