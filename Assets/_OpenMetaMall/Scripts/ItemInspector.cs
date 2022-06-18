@@ -35,7 +35,8 @@ public class ItemInspector : MonoBehaviour
 
         OnItemInspect(false);
 
-        itemPriceText.SetText(UnityEngine.Random.Range(20, 30).ToString());
+        //itemPriceText.SetText(UnityEngine.Random.Range(20, 30).ToString());
+        itemPriceText.SetText("0.1 ICP");
 
         itemInspectorBackground.SetActive(true);
 
