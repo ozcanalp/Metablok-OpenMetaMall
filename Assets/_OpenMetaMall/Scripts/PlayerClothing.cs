@@ -18,8 +18,8 @@ public class PlayerClothing : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ChangeHat());
-        StartCoroutine(ChangeShoe());
+        //StartCoroutine(ChangeShirt());
+        //StartCoroutine(ChangeShoe());
     }
 
     private void Update()
@@ -29,6 +29,7 @@ public class PlayerClothing : MonoBehaviour
 
     void CheckHairVisibility()
     {
+        isAllHatsDisabled = true;
         foreach (Transform hat in hatContainer)
         {
             if (true == hat.gameObject.activeInHierarchy)
@@ -37,7 +38,6 @@ public class PlayerClothing : MonoBehaviour
 
         characterHair.SetActive(isAllHatsDisabled);
 
-        isAllHatsDisabled = true;
     }
 
     IEnumerator ChangeShoe()
@@ -59,7 +59,7 @@ public class PlayerClothing : MonoBehaviour
         }
     }
 
-    IEnumerator ChangeHat()
+    IEnumerator ChangeShirt()
     {
         objectMaterialToChange.GetComponent<Renderer>().material = materials[currentMaterialIndex];
 

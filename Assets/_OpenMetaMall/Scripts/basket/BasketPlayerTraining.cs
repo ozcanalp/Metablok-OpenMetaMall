@@ -8,9 +8,12 @@ public class BasketPlayerTraining : MonoBehaviour
     public Animator basketPlayer;
     public Animator basketBall;
 
-    private BAS currentAnim;
+    public BAS currentAnim;
 
-    private enum BAS
+    public BAS[] animList;
+    int currentAnimIndex = 0;
+
+    public enum BAS
     {
         Chest_Pass_Left,
         Chest_Pass_Right,
@@ -57,7 +60,7 @@ public class BasketPlayerTraining : MonoBehaviour
         // SetAnimation(AllAnimations[Random.Range(0, AllAnimations.Length)]);
 
         // SetAnimation("Dribble");
-                
+
         Debug.Log("Basket started!");
 
         StartAnimation();
@@ -70,6 +73,15 @@ public class BasketPlayerTraining : MonoBehaviour
 
     private IEnumerator DummyActions()
     {
+        while (true)
+        {
+            foreach (BAS anim in animList)
+            {
+                SetAnimation(anim);
+                yield return new WaitForSeconds(basketPlayer.GetCurrentAnimatorStateInfo(0).length);
+            }
+        }
+/* 
         Debug.Log("Basket anim!");
 
         SetAnimation(BAS.Idle_With_Ball);
@@ -78,18 +90,22 @@ public class BasketPlayerTraining : MonoBehaviour
         yield return new WaitForSeconds(2);
         SetAnimation(BAS.Standing_Idle_No_Ball);
         yield return new WaitForSeconds(2);
+         */
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch(currentAnim)
+        switch (currentAnim)
         {
             case BAS.Jog_FWD_Start_With_Ball:
                 break;
             default:
                 break;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            SetAnimation(currentAnim);
     }
 
     private void SetAnimation(BAS anim)

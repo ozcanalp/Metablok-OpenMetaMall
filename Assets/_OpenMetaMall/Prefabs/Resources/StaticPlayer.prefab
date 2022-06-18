@@ -194,7 +194,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 0.83585656, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -335,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1857981087978816477
 Transform:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857981088158841610}
-  m_LocalRotation: {x: 0.09350527, y: 0.3815185, z: -0.038826738, w: 0.91879976}
+  m_LocalRotation: {x: 0.09350527, y: 0.3815185, z: -0.038826734, w: 0.91879976}
   m_LocalPosition: {x: -3.2043302, y: 2.5, z: -2.3942153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3091,7 +3091,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 0.83585656, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3284,7 +3284,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6243269308613387962}
-  m_LocalRotation: {x: 0.09350527, y: 0.3815185, z: -0.03882673, w: 0.91879976}
+  m_LocalRotation: {x: 0.09350527, y: 0.3815185, z: -0.038826734, w: 0.91879976}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3329,7 +3329,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 0.83585656, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3576,7 +3576,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8162883829986340661}
-  m_LocalRotation: {x: 0.07682151, y: 0.38216007, z: -0.03189904, w: 0.9203448}
+  m_LocalRotation: {x: 0.07682152, y: 0.38216007, z: -0.031899035, w: 0.9203448}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3621,7 +3621,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 0.83585656, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3640,6 +3640,10 @@ PrefabInstance:
     - target: {fileID: 2807496330561124399, guid: 949c396c27de520479371c624bb6851e, type: 3}
       propertyPath: m_Name
       value: Shoe2_left
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807496330561124399, guid: 949c396c27de520479371c624bb6851e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3296049596911755925, guid: 949c396c27de520479371c624bb6851e, type: 3}
       propertyPath: m_RootOrder
@@ -3956,6 +3960,10 @@ PrefabInstance:
     - target: {fileID: 8485497339434860261, guid: 94b634a09a30669428daa302b3912ce3, type: 3}
       propertyPath: m_Name
       value: Shoe1_left
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485497339434860261, guid: 94b634a09a30669428daa302b3912ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94b634a09a30669428daa302b3912ce3, type: 3}
@@ -4488,6 +4496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shoe1_right
       objectReference: {fileID: 0}
+    - target: {fileID: 1546738502266201304, guid: 1a0c7960e5643d94c893cccfdb049b2c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2534479450950194891, guid: 1a0c7960e5643d94c893cccfdb049b2c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4782,6 +4794,10 @@ PrefabInstance:
     - target: {fileID: 5189388732467618936, guid: 4cc530092f09b4d4ea5dc186cbe34fd3, type: 3}
       propertyPath: m_Name
       value: Shoe2_right
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189388732467618936, guid: 4cc530092f09b4d4ea5dc186cbe34fd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc530092f09b4d4ea5dc186cbe34fd3, type: 3}
