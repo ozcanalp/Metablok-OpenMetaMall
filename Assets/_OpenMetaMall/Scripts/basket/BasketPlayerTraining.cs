@@ -61,7 +61,7 @@ public class BasketPlayerTraining : MonoBehaviour
 
         // SetAnimation("Dribble");
 
-        Debug.Log("Basket started!");
+        //Debug.Log("Basket started!");
 
         StartAnimation();
     }
@@ -111,7 +111,7 @@ public class BasketPlayerTraining : MonoBehaviour
     private void SetAnimation(BAS anim)
     {
         string animation = anim.ToString().Replace('_', ' ');
-        Debug.Log("basket anim:" + animation);
+        //Debug.Log("basket anim:" + animation);
 
         currentAnim = anim;
 

@@ -58,7 +58,7 @@ public class WalletUI : MonoBehaviour
             getNftsBtn.onClick.RemoveListener(GetNfts);
         }
 
-        if(payBtn != null)
+        if (payBtn != null)
         {
             payBtn.onClick.RemoveListener(Pay);
         }
@@ -78,13 +78,13 @@ public class WalletUI : MonoBehaviour
         if (response == null)
         {
             Debug.LogError("Unable to parse CheckPlugConnectionResponse -- make sure you are running the project as a WebGL build in browser");
-            // SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene(sceneToLoad);
             return;
         }
 
         label.text = "Checked Plug Connection with response of: " + (response.result);
 
-        // SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     void RequestConnection()
