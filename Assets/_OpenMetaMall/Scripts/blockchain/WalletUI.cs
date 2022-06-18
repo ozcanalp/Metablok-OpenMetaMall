@@ -1,4 +1,3 @@
-using itSeez3D.Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -73,19 +72,19 @@ public class WalletUI : MonoBehaviour
 
     void OnCheckConnection(string jsonData)
     {
-        Debug.Log("OnCheckConnection:" + jsonData);
+        Debug.Log("WalletUI.OnCheckConnection:" + jsonData);
 
-        var response = JsonConvert.DeserializeObject<CheckPlugConnectionResponse>(jsonData);
+        var response = JsonUtility.FromJson<CheckPlugConnectionResponse>(jsonData);
         if (response == null)
         {
             Debug.LogError("Unable to parse CheckPlugConnectionResponse -- make sure you are running the project as a WebGL build in browser");
-            SceneManager.LoadScene(sceneToLoad);
+            // SceneManager.LoadScene(sceneToLoad);
             return;
         }
 
         label.text = "Checked Plug Connection with response of: " + (response.result);
 
-        SceneManager.LoadScene(sceneToLoad);
+        // SceneManager.LoadScene(sceneToLoad);
     }
 
     void RequestConnection()
@@ -96,9 +95,9 @@ public class WalletUI : MonoBehaviour
 
     void OnRequestConnection(string jsonData)
     {
-        Debug.Log("OnRequestConnection:" + jsonData);
+        Debug.Log("WalletUI.OnRequestConnection:" + jsonData);
 
-        var response = JsonConvert.DeserializeObject<RequestPlugConnectResponse>(jsonData);
+        var response = JsonUtility.FromJson<RequestPlugConnectResponse>(jsonData);
         if (response == null)
         {
             Debug.LogError("Unable to parse RequestPlugConnectResponse -- make sure you are running the project as a WebGL build in browser");
@@ -118,7 +117,7 @@ public class WalletUI : MonoBehaviour
     {
         Debug.Log("OnGetNfts:" + jsonData);
 
-        var response = JsonConvert.DeserializeObject<GetDabNftsResponse>(jsonData);
+        var response = JsonUtility.FromJson<GetDabNftsResponse>(jsonData);
         if (response == null)
         {
             Debug.LogError("Unable to parse GetDabNftsResponse -- make sure you are running the project as a WebGL build in browser");
@@ -152,7 +151,7 @@ public class WalletUI : MonoBehaviour
     {
         Debug.Log("OnPay:" + jsonData);
 
-        var response = JsonConvert.DeserializeObject<PayResponse>(jsonData);
+        var response = JsonUtility.FromJson<PayResponse>(jsonData);
         if (response == null)
         {
             Debug.LogError("Unable to parse PayResponse -- make sure you are running the project as a WebGL build in browser");

@@ -15,7 +15,7 @@ var WebGLFunctions = {
 	
 	Pay: function (cbIndex, account, amount) 
     {
-        dispatchReactUnityEvent("Pay", cbIndex, Pointer_stringify(account), amount);
+        dispatchReactUnityEvent("Pay", cbIndex, UTF8ToString(account), amount);
     }
 };
 

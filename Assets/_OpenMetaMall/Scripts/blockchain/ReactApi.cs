@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using itSeez3D.Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class ReactApi : MonoBehaviour
@@ -20,28 +18,37 @@ public class ReactApi : MonoBehaviour
 
     public void HandleCallback(string jsonData)
     {
-        Debug.Log("Received JSON Data: " + jsonData);
+        Debug.Log("HandleCallback: Received JSON Data:" + jsonData);
 
-        var response = JsonConvert.DeserializeObject<CallbackResponse>(jsonData);
+        label.text = label.text + " " +jsonData;
+
+        var response = JsonUtility.FromJson<CallbackResponse>(jsonData);
+        // var response = JsonConvert.DeserializeObject<CallbackResponse>(jsonData);
         if (response == null) 
         {
             Debug.Log("Unable to parse JSON cbIndex. There must be no callback");
             return;
         }
-        
-        if (!string.IsNullOrEmpty(response.result))
+
+        label.text += response.result;
+
+        // Debug.Log("HandleCallback: result:" + response.result);
+
+        /* if ("true".Equals(response.result) || "allowed".Equals(response.result))
         {
             label.text = response.result;
             return;
-        }
-            
-        if (!cbDict.ContainsKey(response.cbIndex))
-        {
-            Debug.LogError("The cbIndex=" + response.cbIndex + " does not exist in cbDict");
-        }
+        }*/
 
-        cbDict[response.cbIndex]?.Invoke(jsonData);
-        cbDict.Remove(cbIndex);
+        Debug.Log("HandleCallback: result:" + response.result);
+
+        /* if (!cbDict.ContainsKey(response.cbIndex))
+        {
+            Debug.LogError("HandleCallback: The cbIndex=" + response.cbIndex + " does not exist in cbDict");
+        }*/
+
+        // cbDict[response.cbIndex]?.Invoke(jsonData);
+        // cbDict.Remove(cbIndex);
     }
 
     public void RequestPlugConnect(System.Action<string> cb)
