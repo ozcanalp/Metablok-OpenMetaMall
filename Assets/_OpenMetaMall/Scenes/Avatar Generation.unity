@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3631,7 +3631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349517054009244398, guid: 0c5f3b0a7a4c9044995eefaa2d5e02c7, type: 3}
       propertyPath: gender
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8349517054009244398, guid: 0c5f3b0a7a4c9044995eefaa2d5e02c7, type: 3}
       propertyPath: photoAsset
@@ -3639,7 +3639,11 @@ PrefabInstance:
       objectReference: {fileID: 4900000, guid: 038b4d4d04ef04941b653aab7bb5c1f1, type: 3}
     - target: {fileID: 8349517054009244398, guid: 0c5f3b0a7a4c9044995eefaa2d5e02c7, type: 3}
       propertyPath: fallbackUrl
-      value: 'https://webdemo.avatarsdk.com/test_images/test_selfie_1.jpg  '
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349517054009244398, guid: 0c5f3b0a7a4c9044995eefaa2d5e02c7, type: 3}
+      propertyPath: isCustomPlayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c5f3b0a7a4c9044995eefaa2d5e02c7, type: 3}

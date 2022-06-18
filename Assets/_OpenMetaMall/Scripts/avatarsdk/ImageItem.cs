@@ -29,7 +29,9 @@ namespace MetaMall.AvatarSdk.Cloud
 
 		public AvatarGender gender;
 
-		public Action<byte[], string, AvatarGender> imageSelectedHandler;
+		public Action<byte[], string, AvatarGender, bool> imageSelectedHandler;
+
+		public bool isCustomPlayer = false;
 
 		void Start()
 		{
@@ -41,11 +43,11 @@ namespace MetaMall.AvatarSdk.Cloud
 			if(Uri.IsWellFormedUriString(fallbackUrl, UriKind.Absolute))
 			{
 				if (imageSelectedHandler != null)
-					imageSelectedHandler(photoAsset.bytes, fallbackUrl, gender);
+					imageSelectedHandler(photoAsset.bytes, fallbackUrl, gender, isCustomPlayer);
 			} else
 			{
 				if (imageSelectedHandler != null)
-					imageSelectedHandler(photoAsset.bytes, "", gender);
+					imageSelectedHandler(photoAsset.bytes, "", gender, isCustomPlayer);
 			}
 		}
 

@@ -42,13 +42,13 @@ public class ReactApi : MonoBehaviour
 
         Debug.Log("HandleCallback: result:" + response.result);
 
-        /* if (!cbDict.ContainsKey(response.cbIndex))
+        if (!cbDict.ContainsKey(response.cbIndex))
         {
             Debug.LogError("HandleCallback: The cbIndex=" + response.cbIndex + " does not exist in cbDict");
-        }*/
+        }
 
-        // cbDict[response.cbIndex]?.Invoke(jsonData);
-        // cbDict.Remove(cbIndex);
+        cbDict[response.cbIndex]?.Invoke(jsonData);
+        cbDict.Remove(cbIndex);
     }
 
     public void RequestPlugConnect(System.Action<string> cb)

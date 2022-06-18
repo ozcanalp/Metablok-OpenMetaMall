@@ -185,9 +185,9 @@ namespace ItSeez3D.AvatarSdkSamples.Core
             }
 
             if ((SceneManager.GetActiveScene().name == "Environment") 
-			&& initParams.avatarCode == "95e27fdd-a531-4821-afdf-7cfa296a4653")
+			&& initParams.isCustomPlayer)
             {
-				Debug.Log("acvtivate custom player");
+				Debug.Log("activate custom player");
                 customPlayer.SetActive(true);
                 this.gameObject.transform.parent.gameObject.SetActive(false);
             }
@@ -195,9 +195,6 @@ namespace ItSeez3D.AvatarSdkSamples.Core
             {
                 StartCoroutine(MyLoadAvatar());
             }
-
-
-
         }
 
         private IEnumerator MyLoadAvatar()

@@ -27,7 +27,6 @@ public class WalletUI : MonoBehaviour
         if (connectPlugWalletBtn != null)
         {
             connectPlugWalletBtn.onClick.AddListener(RequestConnection);
-
         }
 
         if (getNftsBtn != null)
@@ -78,7 +77,9 @@ public class WalletUI : MonoBehaviour
         if (response == null)
         {
             Debug.LogError("Unable to parse CheckPlugConnectionResponse -- make sure you are running the project as a WebGL build in browser");
+#if UNITY_EDITOR
             SceneManager.LoadScene(sceneToLoad);
+#endif
             return;
         }
 
@@ -101,10 +102,14 @@ public class WalletUI : MonoBehaviour
         if (response == null)
         {
             Debug.LogError("Unable to parse RequestPlugConnectResponse -- make sure you are running the project as a WebGL build in browser");
+#if UNITY_EDITOR
+            SceneManager.LoadScene(sceneToLoad);
+#endif
             return;
         }
 
         label.text = "Requested Plug Connection with response of: " + response.result;
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     void GetNfts()
