@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ItemInspector : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ItemInspector : MonoBehaviour
     [SerializeField] GameObject itemInspectorBackground;
     [SerializeField] GameObject dragRotationArea;
     [SerializeField] TextMeshProUGUI itemPriceText;
+    [SerializeField] Button btn_Try;
 
     GameObject inspectingObject;
     Transform inspectingObjectTransform;
@@ -47,6 +49,13 @@ public class ItemInspector : MonoBehaviour
 
         //inspectingObject.layer = LayerMask.NameToLayer("InspectingItem");
         SetLayerRecursively(inspectingObject, LayerMask.NameToLayer("InspectingItem"));
+
+        ClothingObject clothingObject;
+        if (inspectingObject.GetComponent<ClothingObject>())
+        {
+            clothingObject = inspectingObject.GetComponent<ClothingObject>();
+            btn_Try.onClick.AddListener((clothingObject).WearItem);
+        }
 
         dragRotationArea.GetComponent<InspectingObjectRotation>().objectToRotate = inspectingObjectTransform;
     }
