@@ -82,7 +82,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 
 		protected readonly string AVATAR_OBJECT_NAME = "Dynamic Avatar";
 
-		protected readonly string AVATAR_OBJECT_HOLDER = "Avatar Holder";
+		protected readonly string AVATAR_OBJECT_HOLDER = "Dynamic Avatar Holder";
 
 		protected readonly string HEAD_OBJECT_NAME = "HeadObject";
 

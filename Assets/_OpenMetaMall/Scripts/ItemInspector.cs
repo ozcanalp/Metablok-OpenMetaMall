@@ -20,17 +20,7 @@ public class ItemInspector : MonoBehaviour
 
     public event Action<bool> OnItemInspect = delegate { };
 
-    private void OnEnable()
-    {
-        playerLook.OnObjectInspect += StartInspectObject;
-    }
-
-    private void OnDisable()
-    {
-        playerLook.OnObjectInspect -= StartInspectObject;
-    }
-
-    private void StartInspectObject(InspectableObject obj)
+    public void StartInspectObject(InspectableObject obj)
     {
         GameManager.Instance.ShowCursor();
 

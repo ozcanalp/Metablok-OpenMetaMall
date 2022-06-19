@@ -15158,7 +15158,7 @@ GameObject:
   - component: {fileID: 700783516}
   - component: {fileID: 700783517}
   m_Layer: 0
-  m_Name: Avatar Holder
+  m_Name: Dynamic Avatar Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18835,7 +18835,8 @@ MonoBehaviour:
   getNftsBtn: {fileID: 0}
   accountInputField: {fileID: 0}
   amountInputField: {fileID: 0}
-  payBtn: {fileID: 0}
+  payBtnForCustomPlayer: {fileID: 0}
+  payBtnForDynamicPlayer: {fileID: 0}
   sceneToLoad: Environment
 --- !u!1 &879785592
 GameObject:

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HatClothing : ClothingObject
 {
-    [SerializeField] GameObject hat;
+    public GameObject hat;
 
     public override void WearItem()
     {
