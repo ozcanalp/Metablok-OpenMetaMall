@@ -188,8 +188,8 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 			&& initParams != null && initParams.isCustomPlayer)
             {
 				Debug.Log("activate custom player");
-                customPlayer.SetActive(true);
-                this.gameObject.transform.parent.gameObject.SetActive(false);
+                //customPlayer.SetActive(true);
+                //this.gameObject.transform.parent.gameObject.SetActive(false);
             }
             else
             {

@@ -11,7 +11,7 @@ public class BugFinder : MonoBehaviour
     // Awake is called before the first frame update
     void Awake()
     {
-        Debug.Log("BUGFINDER: status:" + customPlayer.activeSelf);
+        /* Debug.Log("BUGFINDER: status:" + customPlayer.activeSelf);
         
 
         if (MyGettingStarted.initParams != null)
@@ -28,12 +28,6 @@ public class BugFinder : MonoBehaviour
             Debug.Log("BUGFINDER: set players");
         }
 
-        Debug.Log("BUGFINDER: Start end");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("BUGFINDER: Start end"); */
     }
 }

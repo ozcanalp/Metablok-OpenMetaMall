@@ -39,6 +39,5 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 
         //SpawnCharacter
         PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
-        Debug.Log(spawnPosition.position);
     }
 }

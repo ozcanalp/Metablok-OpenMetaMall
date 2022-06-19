@@ -337,7 +337,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364786595}
-  m_LocalRotation: {x: -0.06213732, y: 0.879232, z: -0.11956281, w: -0.4569408}
+  m_LocalRotation: {x: 0.10416018, y: 0.38795546, z: -0.04417753, w: 0.91470736}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -544,7 +544,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446917332}
-  m_LocalRotation: {x: -0.05381553, y: 0.8812613, z: -0.10355024, w: -0.4579954}
+  m_LocalRotation: {x: 0.08750488, y: 0.38869488, z: -0.03711349, w: 0.9164507}
   m_LocalPosition: {x: 2.669403, y: 2.5, z: 2.9789734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -788,7 +788,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663352023}
-  m_LocalRotation: {x: -0.05381553, y: 0.8812613, z: -0.10355024, w: -0.45799544}
+  m_LocalRotation: {x: 0.14388083, y: 0.63911575, z: -0.061024264, w: -0.753064}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -866,7 +866,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044665782}
-  m_LocalRotation: {x: -0.045497965, y: 0.8829948, z: -0.08754583, w: -0.45889637}
+  m_LocalRotation: {x: 0.07086472, y: 0.3893042, z: -0.0300559, w: 0.91788733}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1269,7 +1269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9195796991194886572
 Transform:
   m_ObjectHideFlags: 0
@@ -1637,7 +1637,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3501095934667119862, guid: 3156da95902ddd94282e21ca528b983c, type: 3}
+    - {fileID: 1973284629764588849, guid: 3156da95902ddd94282e21ca528b983c, type: 3}
+    - {fileID: 5973873940546583733, guid: 3156da95902ddd94282e21ca528b983c, type: 3}
+    - {fileID: 4127457265659227755, guid: 3156da95902ddd94282e21ca528b983c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3156da95902ddd94282e21ca528b983c, type: 3}
 --- !u!4 &1734407171095732791 stripped
 Transform:

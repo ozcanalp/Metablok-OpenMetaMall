@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public enum AVATAR_TYPES { Custom, Dynamic };
+    public AVATAR_TYPES avatarType;
+
     private void Awake()
     {
         if (null == Instance)

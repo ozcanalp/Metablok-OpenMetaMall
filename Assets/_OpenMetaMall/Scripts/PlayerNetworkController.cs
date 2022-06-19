@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using ItSeez3D.AvatarSdkSamples.Core;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,26 +20,23 @@ public class PlayerNetworkController : MonoBehaviour
 
     CharacterController characterController;
 
-    void Start()
+    void Awake()
     {
         characterController = GetComponent<CharacterController>();
 
         DisableAllPlayerObjects();
-
-        
 
         if (!PV.IsMine)
         {
             playerInput.enabled = false;
             camera.SetActive(false);
             cinemachineFreeLook.SetActive(false);
-            
+
             defaultCharacter.SetActive(true);
         }
         else
         {
-            //dynamicCharacter.SetActive(true);
-            customCharacter.SetActive(true);
+            EnablePlayer();
         }
     }
 
@@ -47,6 +45,20 @@ public class PlayerNetworkController : MonoBehaviour
         dynamicCharacter.SetActive(false);
         customCharacter.SetActive(false);
         defaultCharacter.SetActive(false);
+    }
+
+    void EnablePlayer()
+    {
+        if (MyGettingStarted.initParams != null && MyGettingStarted.initParams.isCustomPlayer)
+        {
+            customCharacter.SetActive(true);
+            GameManager.Instance.avatarType = GameManager.AVATAR_TYPES.Custom;
+        }
+        else
+        {
+            dynamicCharacter.SetActive(true);
+            GameManager.Instance.avatarType = GameManager.AVATAR_TYPES.Dynamic;
+        }
     }
 
 }

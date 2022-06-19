@@ -21,6 +21,12 @@ public class ItemInspector : MonoBehaviour
 
     public void StartInspectObject(InspectableObject obj)
     {
+
+        if (GameManager.Instance.avatarType == GameManager.AVATAR_TYPES.Dynamic)
+        {
+            btn_Try.gameObject.SetActive(false);
+        }
+
         GameManager.Instance.ShowCursor();
 
         OnItemInspect(false);
