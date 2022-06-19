@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1276963320169747146}
-  - component: {fileID: 1276963320169747188}
   m_Layer: 0
   m_Name: Supernova Default Player
   m_TagString: Untagged
@@ -34,20 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1276963320169747188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276963320169747145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8405bf131b47e444e9bdcd7ce45b5bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1276963320692987606}
-  playerMovement: {fileID: 0}
 --- !u!1 &1276963320282909364
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,28 +179,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e7b1cb024c5d6a849be202c6df62c9b8, type: 3}
   m_PrefabInstance: {fileID: 1276963320109543095}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2123947013985276902 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e7b1cb024c5d6a849be202c6df62c9b8, type: 3}
-  m_PrefabInstance: {fileID: 1276963320109543095}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1276963320692987606
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123947013985276902}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e7b1cb024c5d6a849be202c6df62c9b8, type: 3}
-  m_Controller: {fileID: 9100000, guid: 69909f1c75358074a8b3218ae9ad8233, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

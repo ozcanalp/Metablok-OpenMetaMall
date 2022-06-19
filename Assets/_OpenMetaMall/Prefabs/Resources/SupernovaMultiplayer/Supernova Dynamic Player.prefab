@@ -1188,7 +1188,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4957321217870179619}
-  - component: {fileID: 1372616571956878610}
   m_Layer: 0
   m_Name: Supernova Dynamic Player
   m_TagString: Dynamic Player
@@ -1211,23 +1210,10 @@ Transform:
   - {fileID: 4957321217940621032}
   - {fileID: 3074162867016558945}
   - {fileID: 3074162866971894369}
+  - {fileID: 552346176154931822}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1372616571956878610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4957321217870179618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9c4e31054241204f9dbc450f4fcec1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!1 &4957321217940621038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,3 +1303,49 @@ MonoBehaviour:
   bodyMobileAnimatorController: {fileID: 9100000, guid: c6a46a1fce425944baf88c9acf1ed9e9, type: 2}
   bodyFemaleAnimatorController: {fileID: 9100000, guid: 3de2a07bd486a494c9cb6efb3972bf4f, type: 2}
   bodyMaleAnimatorController: {fileID: 9100000, guid: 9aefa80f58512644baa965bfb45d38d4, type: 2}
+--- !u!1 &7428267207570194037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 552346176154931822}
+  - component: {fileID: 2337008148803292934}
+  m_Layer: 0
+  m_Name: Dynamic Avatar Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &552346176154931822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428267207570194037}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4957321217870179619}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2337008148803292934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428267207570194037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c4e31054241204f9dbc450f4fcec1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  anim: {fileID: 0}

@@ -298,7 +298,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 
             avatarHolder.GetComponent<DynamicPlayerAnimation>().anim = avatarLoader.AvatarGameObject.GetComponent<FullbodyAnimationManager>();
 
-            avatarHolder.GetComponent<DynamicPlayerAnimation>().animator = avatarLoader.AvatarGameObject.GetComponent<Animator>();
+            //avatarHolder.GetComponent<DynamicPlayerAnimation>().animator = avatarLoader.AvatarGameObject.GetComponent<Animator>();
 
             isAvatarDisplayed = true;
         }

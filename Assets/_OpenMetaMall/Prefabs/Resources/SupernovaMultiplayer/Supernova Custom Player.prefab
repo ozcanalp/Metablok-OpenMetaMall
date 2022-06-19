@@ -195,7 +195,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3607654759878706095}
-  - component: {fileID: 7657959561734276793}
   m_Layer: 0
   m_Name: Supernova Custom Player
   m_TagString: Custom Player
@@ -220,20 +219,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7657959561734276793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3607654759878706092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8405bf131b47e444e9bdcd7ce45b5bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 7127601967514678367}
-  playerMovement: {fileID: 0}
 --- !u!1001 &254138330039692191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,7 +355,7 @@ PrefabInstance:
     - target: {fileID: 3494866738028563761, guid: b2736c1b47d8bf948bf83e52046b9f64, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: db7020a9d5ae8ee4a888c35b2e0760b1, type: 2}
+      objectReference: {fileID: 2100000, guid: 505a438fdc772a94f9b01e0934f32ca9, type: 2}
     - target: {fileID: 5064196202995801932, guid: b2736c1b47d8bf948bf83e52046b9f64, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -391,31 +376,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2736c1b47d8bf948bf83e52046b9f64, type: 3}
   m_PrefabInstance: {fileID: 388865100973191824}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &694943498868133825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b2736c1b47d8bf948bf83e52046b9f64, type: 3}
-  m_PrefabInstance: {fileID: 388865100973191824}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &7127601967514678367
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694943498868133825}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b2736c1b47d8bf948bf83e52046b9f64, type: 3}
-  m_Controller: {fileID: 9100000, guid: 69909f1c75358074a8b3218ae9ad8233, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1227759234793979499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1471663582412541179, guid: b2736c1b47d8bf948bf83e52046b9f64, type: 3}

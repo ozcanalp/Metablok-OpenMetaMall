@@ -29,14 +29,15 @@ public class PlayerNetworkController : MonoBehaviour
 
         if (!PV.IsMine)
         {
-            defaultCharacter.SetActive(true);
             playerInput.enabled = false;
             camera.SetActive(false);
             cinemachineFreeLook.SetActive(false);
+            
+            defaultCharacter.SetActive(true);
         }
         else
         {
-            customCharacter.SetActive(true);
+            dynamicCharacter.SetActive(true);
         }
     }
 
