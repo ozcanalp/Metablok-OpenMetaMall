@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ShoeClothing : ClothingObject
 {
-    [SerializeField] GameObject leftShoe;
-    [SerializeField] GameObject rightShoe;
+    public GameObject leftShoe;
+    public GameObject rightShoe;
 
     public override void WearItem()
     {
