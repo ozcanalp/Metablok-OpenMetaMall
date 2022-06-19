@@ -4,11 +4,15 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
+using ItSeez3D.AvatarSdkSamples.Core;
+using ExitGames.Client.Photon;
 
 public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject Player;
     [SerializeField] Transform spawnPosition;
+
+    public MyClient myClient;
 
     void Start()
     {
@@ -39,5 +43,16 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 
         //SpawnCharacter
         PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
+
+
+        byte eventCode = 199; // make up event codes at will
+        object[] content = new object[] { 3 }; // Array contains the target position and the IDs of the selected units
+        System.Collections.Hashtable evData = new System.Collections.Hashtable(); // put your data into a key-value hashtable
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others }; // You would have to set the Receivers to All in order to receive this event on the local client as well
+
+        PhotonNetwork.RaiseEvent(eventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
+
+
+
 }
