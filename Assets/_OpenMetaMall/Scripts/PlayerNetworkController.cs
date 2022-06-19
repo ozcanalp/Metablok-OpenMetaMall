@@ -37,7 +37,8 @@ public class PlayerNetworkController : MonoBehaviour
         }
         else
         {
-            dynamicCharacter.SetActive(true);
+            //dynamicCharacter.SetActive(true);
+            customCharacter.SetActive(true);
         }
     }
 

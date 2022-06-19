@@ -2786,34 +2786,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 364786597, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9147074
-      objectReference: {fileID: 0}
-    - target: {fileID: 364786597, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.10416017
-      objectReference: {fileID: 0}
-    - target: {fileID: 364786597, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.3879555
-      objectReference: {fileID: 0}
-    - target: {fileID: 364786597, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.044177525
-      objectReference: {fileID: 0}
-    - target: {fileID: 2044665784, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.070864715
-      objectReference: {fileID: 0}
-    - target: {fileID: 2044665784, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.38930416
-      objectReference: {fileID: 0}
-    - target: {fileID: 2044665784, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.030055903
-      objectReference: {fileID: 0}
+    - target: {fileID: 2791368265059557277, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: characterShirtRenderer
+      value: 
+      objectReference: {fileID: 1958837186}
+    - target: {fileID: 5634547759067838237, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: leftShoe
+      value: 
+      objectReference: {fileID: 1958837192}
+    - target: {fileID: 5634547759067838237, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: rightShoe
+      value: 
+      objectReference: {fileID: 1958837189}
+    - target: {fileID: 7351034483822417478, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: leftShoe
+      value: 
+      objectReference: {fileID: 1958837190}
+    - target: {fileID: 7351034483822417478, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: rightShoe
+      value: 
+      objectReference: {fileID: 1958837187}
+    - target: {fileID: 7763528499386001725, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: characterShirtRenderer
+      value: 
+      objectReference: {fileID: 1958837186}
+    - target: {fileID: 9195796989890181619, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: hat
+      value: 
+      objectReference: {fileID: 1958837194}
+    - target: {fileID: 9195796990023576817, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: hat
+      value: 
+      objectReference: {fileID: 1958837193}
+    - target: {fileID: 9195796990059321259, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: hat
+      value: 
+      objectReference: {fileID: 1958837195}
+    - target: {fileID: 9195796990565883474, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: leftShoe
+      value: 
+      objectReference: {fileID: 1958837191}
+    - target: {fileID: 9195796990565883474, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: rightShoe
+      value: 
+      objectReference: {fileID: 1958837188}
     - target: {fileID: 9195796991194886561, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
       propertyPath: sceneViewId
       value: 4
@@ -2821,10 +2837,6 @@ PrefabInstance:
     - target: {fileID: 9195796991194886571, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
       propertyPath: m_Name
       value: Supernova Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195796991194886571, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9195796991194886572, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
       propertyPath: m_RootOrder
@@ -2870,5 +2882,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9195796991267187791, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
+      propertyPath: hat
+      value: 
+      objectReference: {fileID: 1958837196}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7e64f1869c56f7499d02d9833bc875f, type: 3}
