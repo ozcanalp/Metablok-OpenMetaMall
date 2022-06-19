@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ItemInspector : MonoBehaviour
 {
-    [SerializeField] PlayerLook playerLook;
     [SerializeField] RenderTexture rt;
     [SerializeField] GameObject itemInspectorBackground;
     [SerializeField] GameObject dragRotationArea;
