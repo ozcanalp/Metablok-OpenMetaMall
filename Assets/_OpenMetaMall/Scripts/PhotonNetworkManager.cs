@@ -44,7 +44,10 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
         //SpawnCharacter
         myAvatar = PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
-        myAvatar.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = MyGettingStarted.initParams.avatarCode;
+        if (false == MyGettingStarted.initParams.isCustomPlayer)
+        {
+            myAvatar.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = MyGettingStarted.initParams.avatarCode;
+        }
         GameManager.Instance.avatars[MyGettingStarted.initParams.avatarCode] = myAvatar;
 
 
@@ -71,10 +74,10 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             MyGettingStarted.initParams.isCustomPlayer = false;
 
             GameObject[] supernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
-            foreach(GameObject supernovaPlayer in supernovaPlayers)
+            foreach (GameObject supernovaPlayer in supernovaPlayers)
             {
                 GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
-                if(false == dynamicPlayer.activeInHierarchy)
+                if (false == dynamicPlayer.activeInHierarchy)
                 {
                     dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
                     GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
@@ -92,7 +95,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             Debug.LogWarning("Image Index: " + imageIndex);
             Debug.LogWarning("Avatar Code: " + avatarCode);
         }
-        else if(photonEvent.Code == (byte)198)
+        else if (photonEvent.Code == (byte)198)
         {
             object[] data = (object[])photonEvent.CustomData;
             int imageIndex = (int)data[0];
@@ -102,10 +105,10 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             Debug.LogWarning(avatarCode);
 
             GameObject[] supernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
-            foreach(GameObject supernovaPlayer in supernovaPlayers)
+            foreach (GameObject supernovaPlayer in supernovaPlayers)
             {
                 GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
-                if(false == dynamicPlayer.activeInHierarchy)
+                if (false == dynamicPlayer.activeInHierarchy)
                 {
                     dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
                     GameManager.Instance.avatars[avatarCode] = supernovaPlayer;

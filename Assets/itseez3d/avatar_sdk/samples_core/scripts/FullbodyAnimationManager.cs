@@ -55,8 +55,9 @@ namespace ItSeez3D.AvatarSdkSamples.Core
             animatorAvatar = AvatarBuilder.BuildHumanAvatar(gameObject, BuildHumanDescription(meshRenderer, false));
             animatorAvatarOnHeels = AvatarBuilder.BuildHumanAvatar(gameObject, BuildHumanDescription(meshRenderer, true));
             animator.avatar = ChooseAvatar();
-            transform.parent.gameObject.GetComponent<Animator>().avatar = animator.avatar;
-
+            
+            //transform.parent.gameObject.GetComponent<Animator>().avatar = animator.avatar;
+            
             // Playing animation could be requested before animation manager starts. Play it now.
             if (currentAnimationIdx != -1)
                 PlayCurrentAnimation();
