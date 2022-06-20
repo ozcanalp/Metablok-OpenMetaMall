@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePlayerComponent(bool obj)
     {
-        Debug.Log(obj);
         if (!obj)
         {
             playerMovement.enabled = false;

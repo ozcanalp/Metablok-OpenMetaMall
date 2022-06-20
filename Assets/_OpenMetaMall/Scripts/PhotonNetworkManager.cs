@@ -13,8 +13,6 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     [SerializeField] Transform spawnPosition;
     GameObject mySupernovaPlayer;
 
-    public MyClient myClient;
-
     void Start()
     {
         ConnectToMasterServer();
@@ -92,7 +90,6 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
                     if (false == dynamicPlayer.activeInHierarchy)
                     {
-                        Debug.LogWarning("Photon View Id: " + photonViewId);
                         dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
                         GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
                         dynamicPlayer.SetActive(true);
@@ -101,56 +98,8 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 }
             }
 
-            /* 
-                        GameObject supernovaPlayer = supernovaPlayers[supernovaPlayers.Length - 1];
-                        GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
-                        if (false == dynamicPlayer.activeInHierarchy)
-                        {
-                            Debug.LogWarning("199 Avatar Code: " + avatarCode);
-                            dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
-                            GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
-                            dynamicPlayer.SetActive(true);
-                        }
-             */
-
-
-            /* 
-            for (int i = 1; i < supernovaPlayers.Length; i++)
-            {
-
-                GameObject supernovaPlayer = supernovaPlayers[i];
-                GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
-                if (false == dynamicPlayer.activeInHierarchy)
-                {
-                    dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
-                    GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
-                    dynamicPlayer.SetActive(true);
-                    break;
-                }
-
-            }
- */
             SendMyAvatarCode();
 
-            /* 
-            
-            foreach (GameObject supernovaPlayer in supernovaPlayers)
-            {
-                GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
-                if (false == dynamicPlayer.activeInHierarchy)
-                {
-                    dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
-                    GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
-                    dynamicPlayer.SetActive(true);
-                }
-            } 
-
-            GameObject otherAvatar = PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
-            otherAvatar.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
-            Debug.LogWarning("Image Index: " + imageIndex);
-            Debug.LogWarning("Avatar Code: " + avatarCode); 
-            
-            */
         }
         else if (photonEvent.Code == (byte)198)
         {
@@ -169,7 +118,6 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
                     if (false == dynamicPlayer.activeInHierarchy)
                     {
-                        Debug.LogWarning("Photon View Id: " + photonViewId);
                         dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
                         GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
                         dynamicPlayer.SetActive(true);
@@ -177,20 +125,6 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     }
                 }
             }
-
-            /* GameObject[] supernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
-            foreach (GameObject supernovaPlayer in supernovaPlayers)
-            {
-                GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
-                if (false == dynamicPlayer.activeInHierarchy)
-                {
-                    Debug.LogWarning("198 Avatar Code: " + avatarCode);
-                    dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
-                    GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
-                    dynamicPlayer.SetActive(true);
-                    break;
-                }
-            } */
         }
         else if (photonEvent.Code == (byte)197)
         {
@@ -206,11 +140,11 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             {
                 Debug.LogWarning("Avatar not found");
             }
-            //SupernovaPlayer.transform.GetChild()
 
+            /* 
             Debug.LogWarning("Avatar Code: " + avatarCode);
-
-            Debug.LogWarning("Animation Parameter IsWalking: " + isWalking);
+            Debug.LogWarning("Animation Parameter IsWalking: " + isWalking); 
+            */
         }
     }
 
