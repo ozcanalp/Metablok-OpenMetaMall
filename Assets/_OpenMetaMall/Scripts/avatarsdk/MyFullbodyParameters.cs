@@ -563,6 +563,9 @@ namespace ItSeez3D.AvatarSdkSamples.Core
                         bodyAnimationManager.standOnHeels = outfitsWithHeels.Contains(outfitName);
                     };
                 }
+
+
+
             }
         }
 
