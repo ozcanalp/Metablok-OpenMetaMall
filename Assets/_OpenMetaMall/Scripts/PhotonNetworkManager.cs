@@ -39,11 +39,20 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public override void OnJoinedRoom()
     {
+        StartCoroutine(OnJoinedRoomRoutine());
+    }
+
+    IEnumerator OnJoinedRoomRoutine()
+    {
         base.OnJoinedRoom();
         Debug.Log("Joined Room");
 
         //SpawnCharacter
         mySupernovaPlayer = PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
+        PhotonView photonView = mySupernovaPlayer.GetComponent<PhotonView>();
+        if (PhotonNetwork.AllocateViewID(photonView))
+            Debug.LogWarning("View Id Allocated: " + photonView.ViewID);
+
 
         if (false == MyGettingStarted.initParams.isCustomPlayer)
         {
@@ -59,6 +68,8 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others }; // You would have to set the Receivers to All in order to receive this event on the local client as well
 
         PhotonNetwork.RaiseEvent(eventCode, content, raiseEventOptions, SendOptions.SendReliable);
+
+        yield return new WaitForSeconds(5);
     }
 
     public void OnEvent(EventData photonEvent)
@@ -66,7 +77,6 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
         if (photonEvent.Code == (byte)199)
         {
-            Debug.LogError("EventCode 199");
             object[] data = (object[])photonEvent.CustomData;
             int imageIndex = (int)data[0];
             string avatarCode = (string)data[1];
@@ -77,8 +87,22 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
             GameObject[] supernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
 
-            for(int i = 1; i<supernovaPlayers.Length; i++)
+            GameObject supernovaPlayer = supernovaPlayers[supernovaPlayers.Length - 1];
+            GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
+            if (false == dynamicPlayer.activeInHierarchy)
             {
+                Debug.LogWarning("199 Avatar Code: " + avatarCode);
+                dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
+                GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
+                dynamicPlayer.SetActive(true);
+            }
+
+
+
+            /* 
+            for (int i = 1; i < supernovaPlayers.Length; i++)
+            {
+
                 GameObject supernovaPlayer = supernovaPlayers[i];
                 GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
                 if (false == dynamicPlayer.activeInHierarchy)
@@ -88,9 +112,14 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     dynamicPlayer.SetActive(true);
                     break;
                 }
-            }
 
-            /* foreach (GameObject supernovaPlayer in supernovaPlayers)
+            }
+ */
+            SendMyAvatarCode();
+
+            /* 
+            
+            foreach (GameObject supernovaPlayer in supernovaPlayers)
             {
                 GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
                 if (false == dynamicPlayer.activeInHierarchy)
@@ -99,20 +128,18 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
                     dynamicPlayer.SetActive(true);
                 }
-            } */
+            } 
 
-            SendMyAvatarCode();
-
-            /* 
-                GameObject otherAvatar = PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
-                otherAvatar.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
-            */
-
+            GameObject otherAvatar = PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
+            otherAvatar.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
             Debug.LogWarning("Image Index: " + imageIndex);
-            Debug.LogWarning("Avatar Code: " + avatarCode);
+            Debug.LogWarning("Avatar Code: " + avatarCode); 
+            
+            */
         }
         else if (photonEvent.Code == (byte)198)
         {
+            //Message from currently joined player to newly joined player.
             object[] data = (object[])photonEvent.CustomData;
             int imageIndex = (int)data[0];
             string avatarCode = (string)data[1];
@@ -126,9 +153,11 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
                 if (false == dynamicPlayer.activeInHierarchy)
                 {
+                    Debug.LogWarning("198 Avatar Code: " + avatarCode);
                     dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
                     GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
                     dynamicPlayer.SetActive(true);
+                    break;
                 }
             }
         }
@@ -138,7 +167,14 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             string avatarCode = (string)data[0];
             bool isWalking = (bool)data[1];
 
-            GameManager.Instance.avatars[avatarCode].gameObject.GetComponent<DynamicAvatarFinder>().DynamicAvatar.GetComponent<Animator>().SetBool("Walking", isWalking);
+            if (GameManager.Instance.avatars[avatarCode] != null)
+            {
+                GameManager.Instance.avatars[avatarCode].gameObject.GetComponent<DynamicAvatarFinder>().DynamicAvatar.GetComponent<Animator>().SetBool("Walking", isWalking);
+            }
+            else
+            {
+                Debug.LogWarning("Avatar not found");
+            }
             //SupernovaPlayer.transform.GetChild()
 
             Debug.LogWarning("Avatar Code: " + avatarCode);

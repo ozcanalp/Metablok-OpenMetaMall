@@ -90,7 +90,8 @@ public class WalletUI : MonoBehaviour
     void RequestConnection()
     {
         label.text = "Loading...";
-        ReactApi.Instance.RequestPlugConnect(OnRequestConnection);
+        SceneManager.LoadScene(sceneToLoad);
+        //ReactApi.Instance.RequestPlugConnect(OnRequestConnection);
     }
 
     void OnRequestConnection(string jsonData)
