@@ -38,7 +38,6 @@ public class PlayerNetworkController : MonoBehaviourPunCallbacks
             cinemachineFreeLook.SetActive(false);
 
             //dynamicCharacter.SetActive(true);
-
             //Avatars.transform.GetChild(MyGettingStarted.initParams.imageIndex).gameObject.SetActive(true);
             //defaultCharacter.SetActive(true);
         }
@@ -61,6 +60,7 @@ public class PlayerNetworkController : MonoBehaviourPunCallbacks
 
     void DisableAllPlayerObjects()
     {
+        //Supernova Dynamic Player
         dynamicCharacter.SetActive(false);
         /* customCharacter.SetActive(false);
         defaultCharacter.SetActive(false); */

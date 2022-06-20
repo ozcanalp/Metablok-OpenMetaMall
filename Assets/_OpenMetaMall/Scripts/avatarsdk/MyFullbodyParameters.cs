@@ -452,9 +452,10 @@ namespace ItSeez3D.AvatarSdkSamples.Core
             }
             else
             {
-                GameObject[] SupernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
+                //GameObject[] SupernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
                 //avatarObject.transform.parent = SupernovaPlayers[SupernovaPlayers.Length-1].transform;
                 avatarObject.transform.parent = GameManager.Instance.avatars[avatarCode].gameObject.transform;
+                GameManager.Instance.avatars[avatarCode].gameObject.GetComponent<DynamicAvatarFinder>().DynamicAvatar = avatarObject;
 
                 //avatarObject.transform.parent = GameManager.Instance.lastCreatedDynamicAvatar.transform;
             }
@@ -563,6 +564,9 @@ namespace ItSeez3D.AvatarSdkSamples.Core
                         bodyAnimationManager.standOnHeels = outfitsWithHeels.Contains(outfitName);
                     };
                 }
+
+
+
             }
         }
 
