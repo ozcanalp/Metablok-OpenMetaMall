@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1756158193539205994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1756158193539205995}
+  - component: {fileID: 1756158193539205998}
+  - component: {fileID: 1756158193539205997}
+  - component: {fileID: 1756158193539205996}
+  m_Layer: 0
+  m_Name: OrangeShirt_pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1756158193539205995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756158193539205994}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -364.495, y: -116.844, z: -379.317}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4719146320299335202}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756158193539205998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756158193539205994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290b7a64f3980e0468e318c1e2682b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterShirtRenderer: {fileID: 0}
+  shirtMaterial: {fileID: 2100000, guid: db7020a9d5ae8ee4a888c35b2e0760b1, type: 2}
+--- !u!114 &1756158193539205997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756158193539205994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2305d75019a1b849a4872db0d644f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1756158193539205996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756158193539205994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99050903, y: 0.87989044, z: 0.42477417}
+  m_Center: {x: 0.0047454834, y: -0.041088104, z: 0.028427124}
+--- !u!1001 &1756158194470452268
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1756158193539205995}
+    m_Modifications:
+    - target: {fileID: 4270891329526779180, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db7020a9d5ae8ee4a888c35b2e0760b1, type: 2}
+    - target: {fileID: 5534994882942628346, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea6e3df7d0773304cbc219ee22129a61, type: 2}
+    - target: {fileID: 6422948912805831180, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: characterShirtRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.005004883
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8509979
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.010009766
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422948912805831186, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_Name
+      value: OrangeShirt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551529547973896205, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551529547973896205, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551529547973896205, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551529547973896205, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6422948912805831187, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+--- !u!4 &4719146320299335202 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6422948912805831182, guid: 78142d8bc3ccf144db05715f88c6a608, type: 3}
+  m_PrefabInstance: {fileID: 1756158194470452268}
+  m_PrefabAsset: {fileID: 0}

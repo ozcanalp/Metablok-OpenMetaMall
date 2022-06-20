@@ -9,9 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6422948912805831182}
-  - component: {fileID: 6422948912805831187}
-  - component: {fileID: 6422948912805831180}
-  - component: {fileID: 6422948912805831183}
   m_Layer: 0
   m_Name: OrangeShirt
   m_TagString: Untagged
@@ -35,45 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6422948912805831187
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6422948912805831186}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5317993, y: 1, z: 0.5242615}
-  m_Center: {x: 0.0018615723, y: 0, z: 0.001876831}
---- !u!114 &6422948912805831180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6422948912805831186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290b7a64f3980e0468e318c1e2682b2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterShirtRenderer: {fileID: 0}
-  shirtMaterial: {fileID: 2100000, guid: db7020a9d5ae8ee4a888c35b2e0760b1, type: 2}
---- !u!114 &6422948912805831183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6422948912805831186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2305d75019a1b849a4872db0d644f19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8153656820385239014
 PrefabInstance:
   m_ObjectHideFlags: 0
