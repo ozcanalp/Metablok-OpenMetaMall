@@ -11,7 +11,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     [SerializeField] GameObject Player;
     [SerializeField] Transform spawnPosition;
-    GameObject myAvatar;
+    GameObject mySupernovaPlayer;
 
     public MyClient myClient;
 
@@ -43,12 +43,13 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         Debug.Log("Joined Room");
 
         //SpawnCharacter
-        myAvatar = PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
+        mySupernovaPlayer = PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
+
         if (false == MyGettingStarted.initParams.isCustomPlayer)
         {
-            myAvatar.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = MyGettingStarted.initParams.avatarCode;
+            mySupernovaPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = MyGettingStarted.initParams.avatarCode;
         }
-        GameManager.Instance.avatars[MyGettingStarted.initParams.avatarCode] = myAvatar;
+        GameManager.Instance.avatars[MyGettingStarted.initParams.avatarCode] = mySupernovaPlayer;
 
 
 
@@ -65,6 +66,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
         if (photonEvent.Code == (byte)199)
         {
+            Debug.LogError("EventCode 199");
             object[] data = (object[])photonEvent.CustomData;
             int imageIndex = (int)data[0];
             string avatarCode = (string)data[1];
@@ -74,7 +76,21 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             MyGettingStarted.initParams.isCustomPlayer = false;
 
             GameObject[] supernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
-            foreach (GameObject supernovaPlayer in supernovaPlayers)
+
+            for(int i = 1; i<supernovaPlayers.Length; i++)
+            {
+                GameObject supernovaPlayer = supernovaPlayers[i];
+                GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
+                if (false == dynamicPlayer.activeInHierarchy)
+                {
+                    dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
+                    GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
+                    dynamicPlayer.SetActive(true);
+                    break;
+                }
+            }
+
+            /* foreach (GameObject supernovaPlayer in supernovaPlayers)
             {
                 GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
                 if (false == dynamicPlayer.activeInHierarchy)
@@ -83,7 +99,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
                     dynamicPlayer.SetActive(true);
                 }
-            }
+            } */
 
             SendMyAvatarCode();
 
@@ -100,10 +116,10 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             object[] data = (object[])photonEvent.CustomData;
             int imageIndex = (int)data[0];
             string avatarCode = (string)data[1];
-
-            Debug.LogWarning(imageIndex);
-            Debug.LogWarning(avatarCode);
-
+            /* 
+                        Debug.LogWarning(imageIndex);
+                        Debug.LogWarning(avatarCode);
+             */
             GameObject[] supernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
             foreach (GameObject supernovaPlayer in supernovaPlayers)
             {
@@ -115,6 +131,19 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     dynamicPlayer.SetActive(true);
                 }
             }
+        }
+        else if (photonEvent.Code == (byte)197)
+        {
+            object[] data = (object[])photonEvent.CustomData;
+            string avatarCode = (string)data[0];
+            bool isWalking = (bool)data[1];
+
+            GameManager.Instance.avatars[avatarCode].gameObject.GetComponent<DynamicAvatarFinder>().DynamicAvatar.GetComponent<Animator>().SetBool("Walking", isWalking);
+            //SupernovaPlayer.transform.GetChild()
+
+            Debug.LogWarning("Avatar Code: " + avatarCode);
+
+            Debug.LogWarning("Animation Parameter IsWalking: " + isWalking);
         }
     }
 

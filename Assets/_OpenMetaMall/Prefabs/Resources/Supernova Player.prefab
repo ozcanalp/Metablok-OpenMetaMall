@@ -1296,6 +1296,7 @@ GameObject:
   - component: {fileID: 6693186429487967141}
   - component: {fileID: 6448792707055513207}
   - component: {fileID: 3976698345669716370}
+  - component: {fileID: 7654930329892928136}
   m_Layer: 0
   m_Name: Supernova Player
   m_TagString: SupernovaPlayer
@@ -1559,6 +1560,19 @@ MonoBehaviour:
   itemInspector: {fileID: 0}
   interactionDistance: 10
   currentlyInspecting: 0
+--- !u!114 &7654930329892928136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9195796991194886571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46b4cfa433c81e4298cc6cbedb963ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DynamicAvatar: {fileID: 0}
 --- !u!1001 &2122423156386130549
 PrefabInstance:
   m_ObjectHideFlags: 0
