@@ -20,8 +20,17 @@ public class MyClient : MonoBehaviour, IOnEventCallback
 
     public void OnEvent(EventData photonEvent)
     {
-        if(photonEvent.Code == (byte)199)
-            Debug.LogWarning("Photon Event Receive");
+        if (photonEvent.Code == (byte)199)
+        {
+
+
+            object[] data = (object[])photonEvent.CustomData;
+            int imageIndex = (int)data[0];
+
+            Debug.LogWarning("Image Index: " + imageIndex);
+
+        }
+
 
     }
 }

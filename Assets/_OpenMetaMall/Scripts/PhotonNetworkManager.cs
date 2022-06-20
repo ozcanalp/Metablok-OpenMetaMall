@@ -46,7 +46,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 
 
         byte eventCode = 199; // make up event codes at will
-        object[] content = new object[] { 3 }; // Array contains the target position and the IDs of the selected units
+        object[] content = new object[] { MyGettingStarted.initParams.imageIndex }; // Array contains the target position and the IDs of the selected units
         System.Collections.Hashtable evData = new System.Collections.Hashtable(); // put your data into a key-value hashtable
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others }; // You would have to set the Receivers to All in order to receive this event on the local client as well
 
