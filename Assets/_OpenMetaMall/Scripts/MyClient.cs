@@ -6,9 +6,9 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-public class MyClient : MonoBehaviour, IOnEventCallback
+public class MyClient : MonoBehaviour //,IOnEventCallback
 {
-    private void OnEnable()
+    /* private void OnEnable()
     {
         PhotonNetwork.AddCallbackTarget(this);
     }
@@ -26,11 +26,17 @@ public class MyClient : MonoBehaviour, IOnEventCallback
 
             object[] data = (object[])photonEvent.CustomData;
             int imageIndex = (int)data[0];
+            string avatarCode = (string)data[1];
+
+            MyGettingStarted.initParams.avatarCode = avatarCode;
+            MyGettingStarted.initParams.imageIndex = imageIndex;
+            MyGettingStarted.initParams.isCustomPlayer = false;
 
             Debug.LogWarning("Image Index: " + imageIndex);
+            Debug.LogWarning("Avatar Code: " + avatarCode);
 
         }
 
 
-    }
+    } */
 }

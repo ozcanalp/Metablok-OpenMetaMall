@@ -37,7 +37,9 @@ public class PlayerNetworkController : MonoBehaviourPunCallbacks
             camera.SetActive(false);
             cinemachineFreeLook.SetActive(false);
 
-            Avatars.transform.GetChild(MyGettingStarted.initParams.imageIndex).gameObject.SetActive(true);
+            //dynamicCharacter.SetActive(true);
+
+            //Avatars.transform.GetChild(MyGettingStarted.initParams.imageIndex).gameObject.SetActive(true);
             //defaultCharacter.SetActive(true);
         }
         else
