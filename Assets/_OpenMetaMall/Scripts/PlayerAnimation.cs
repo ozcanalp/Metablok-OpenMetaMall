@@ -20,7 +20,6 @@ public class PlayerAnimation : MonoBehaviour
 
     private void MovementAnimation(bool isWalking)
     {
-        //Debug.Log("IsWalking: " + isWalking);
         anim.SetBool("Walking", isWalking);
     }
 }

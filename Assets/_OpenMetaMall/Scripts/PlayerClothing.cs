@@ -43,7 +43,6 @@ public class PlayerClothing : MonoBehaviour
     IEnumerator ChangeShoe()
     {
         int numberOfShoes = shoeContainers[0].childCount;
-        Debug.Log(numberOfShoes);
 
         while (true)
         {

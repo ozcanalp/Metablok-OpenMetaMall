@@ -26,12 +26,6 @@ public class DynamicPlayerAnimation : MonoBehaviour
 
     private void MovementAnimation(bool isWalking)
     {
-        Debug.Log(animator);
-
-        Debug.Log(anim);
-
-        Debug.Log("movement animation function called");
-
         if (animator == null)
         {
             if (anim == null)
@@ -54,11 +48,6 @@ public class DynamicPlayerAnimation : MonoBehaviour
 
     public void PlayFacialAnimation()
     {
-        // anim.SetBool("IsWalking", isWalking);
-
-        Debug.Log("AAAAA");
         anim.PlayCurrentAnimation();
-        //    anim.PlayAnimationByName("Walking");
-
     }
 }

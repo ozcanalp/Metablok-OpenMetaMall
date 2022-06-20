@@ -24,11 +24,7 @@ public class PlayerNetworkController : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-
-        Debug.Log(MyGettingStarted.initParams.imageIndex);
-
         characterController = GetComponent<CharacterController>();
-
         DisableAllPlayerObjects();
 
         if (!PV.IsMine)
@@ -36,26 +32,11 @@ public class PlayerNetworkController : MonoBehaviourPunCallbacks
             playerInput.enabled = false;
             camera.SetActive(false);
             cinemachineFreeLook.SetActive(false);
-
-            //dynamicCharacter.SetActive(true);
-            //Avatars.transform.GetChild(MyGettingStarted.initParams.imageIndex).gameObject.SetActive(true);
-            //defaultCharacter.SetActive(true);
         }
         else
         {
             EnablePlayer();
         }
-    }
-
-    void Start()
-    {
-        PV.RPC("SendImageIndex", RpcTarget.All);
-    }
-
-    [PunRPC]
-    void SendImageIndex()
-    {
-        Debug.Log("RPC Message:" + MyGettingStarted.initParams.imageIndex);
     }
 
     void DisableAllPlayerObjects()
