@@ -50,9 +50,6 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         //SpawnCharacter
         mySupernovaPlayer = PhotonNetwork.Instantiate(Player.gameObject.name, spawnPosition.position, spawnPosition.rotation);
         PhotonView photonView = mySupernovaPlayer.GetComponent<PhotonView>();
-        if (PhotonNetwork.AllocateViewID(photonView))
-            Debug.LogWarning("View Id Allocated: " + photonView.ViewID);
-
 
         if (false == MyGettingStarted.initParams.isCustomPlayer)
         {
@@ -63,7 +60,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
         byte eventCode = 199; // make up event codes at will
-        object[] content = new object[] { MyGettingStarted.initParams.imageIndex, MyGettingStarted.initParams.avatarCode }; // Array contains the target position and the IDs of the selected units
+        object[] content = new object[] { MyGettingStarted.initParams.imageIndex, MyGettingStarted.initParams.avatarCode, photonView.ViewID }; // Array contains the target position and the IDs of the selected units
         System.Collections.Hashtable evData = new System.Collections.Hashtable(); // put your data into a key-value hashtable
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others }; // You would have to set the Receivers to All in order to receive this event on the local client as well
 
@@ -80,6 +77,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             object[] data = (object[])photonEvent.CustomData;
             int imageIndex = (int)data[0];
             string avatarCode = (string)data[1];
+            int photonViewId = (int)data[2];
 
             //MyGettingStarted.initParams.avatarCode = avatarCode;
             MyGettingStarted.initParams.imageIndex = imageIndex;
@@ -87,16 +85,33 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
             GameObject[] supernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
 
-            GameObject supernovaPlayer = supernovaPlayers[supernovaPlayers.Length - 1];
-            GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
-            if (false == dynamicPlayer.activeInHierarchy)
+            foreach (GameObject supernovaPlayer in supernovaPlayers)
             {
-                Debug.LogWarning("199 Avatar Code: " + avatarCode);
-                dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
-                GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
-                dynamicPlayer.SetActive(true);
+                if (supernovaPlayer.GetComponent<PhotonView>().ViewID == photonViewId)
+                {
+                    GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
+                    if (false == dynamicPlayer.activeInHierarchy)
+                    {
+                        Debug.LogWarning("Photon View Id: " + photonViewId);
+                        dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
+                        GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
+                        dynamicPlayer.SetActive(true);
+                        break;
+                    }
+                }
             }
 
+            /* 
+                        GameObject supernovaPlayer = supernovaPlayers[supernovaPlayers.Length - 1];
+                        GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
+                        if (false == dynamicPlayer.activeInHierarchy)
+                        {
+                            Debug.LogWarning("199 Avatar Code: " + avatarCode);
+                            dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
+                            GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
+                            dynamicPlayer.SetActive(true);
+                        }
+             */
 
 
             /* 
@@ -143,11 +158,27 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             object[] data = (object[])photonEvent.CustomData;
             int imageIndex = (int)data[0];
             string avatarCode = (string)data[1];
-            /* 
-                        Debug.LogWarning(imageIndex);
-                        Debug.LogWarning(avatarCode);
-             */
+            int photonViewId = (int)data[2];
+
             GameObject[] supernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
+
+            foreach (GameObject supernovaPlayer in supernovaPlayers)
+            {
+                if (supernovaPlayer.GetComponent<PhotonView>().ViewID == photonViewId)
+                {
+                    GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
+                    if (false == dynamicPlayer.activeInHierarchy)
+                    {
+                        Debug.LogWarning("Photon View Id: " + photonViewId);
+                        dynamicPlayer.GetComponentInChildren<MyFullbodyParameters>().AvatarCode = avatarCode;
+                        GameManager.Instance.avatars[avatarCode] = supernovaPlayer;
+                        dynamicPlayer.SetActive(true);
+                        break;
+                    }
+                }
+            }
+
+            /* GameObject[] supernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
             foreach (GameObject supernovaPlayer in supernovaPlayers)
             {
                 GameObject dynamicPlayer = supernovaPlayer.transform.GetChild(0).gameObject;
@@ -159,7 +190,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     dynamicPlayer.SetActive(true);
                     break;
                 }
-            }
+            } */
         }
         else if (photonEvent.Code == (byte)197)
         {
@@ -186,7 +217,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     void SendMyAvatarCode()
     {
         byte eventCode = 198; // make up event codes at will
-        object[] content = new object[] { MyGettingStarted.initParams.imageIndex, MyGettingStarted.initParams.avatarCode }; // Array contains the target position and the IDs of the selected units
+        object[] content = new object[] { MyGettingStarted.initParams.imageIndex, MyGettingStarted.initParams.avatarCode, mySupernovaPlayer.GetComponent<PhotonView>().ViewID }; // Array contains the target position and the IDs of the selected units
         System.Collections.Hashtable evData = new System.Collections.Hashtable(); // put your data into a key-value hashtable
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others }; // You would have to set the Receivers to All in order to receive this event on the local client as well
 
