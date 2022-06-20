@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ItemInspector : MonoBehaviour
 {
-    [SerializeField] PlayerLook playerLook;
     [SerializeField] RenderTexture rt;
     [SerializeField] GameObject itemInspectorBackground;
     [SerializeField] GameObject dragRotationArea;
@@ -22,6 +21,12 @@ public class ItemInspector : MonoBehaviour
 
     public void StartInspectObject(InspectableObject obj)
     {
+
+        if (GameManager.Instance.avatarType == GameManager.AVATAR_TYPES.Dynamic)
+        {
+            btn_Try.gameObject.SetActive(false);
+        }
+
         GameManager.Instance.ShowCursor();
 
         OnItemInspect(false);

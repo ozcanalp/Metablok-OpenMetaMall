@@ -13,9 +13,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CinemachineInputProvider cinemachineInputProvider;
     [SerializeField] Canvas playerHud;
 
+    private void Awake()
+    {
+        itemInspector = GameObject.FindGameObjectWithTag("ItemInspector").GetComponent<ItemInspector>();
+    }
+
     private void Reset()
     {
-        itemInspector = GetComponentInChildren<ItemInspector>();
         playerMovement = GetComponent<PlayerMovement>();
         playerLook = GetComponent<PlayerLook>();
         cinemachineInputProvider = GetComponentInChildren<CinemachineInputProvider>();

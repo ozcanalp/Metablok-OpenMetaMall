@@ -55,7 +55,7 @@ public class ReactApi : MonoBehaviour
         PlugUtils.GetPlugNfts( GetCallbackIndex(cb) );
     }
 
-    public void Pay(System.Action<string> cb, string account, float amount)
+    public void Pay(System.Action<string> cb, string account, double amount)
     {
         PlugUtils.Pay(GetCallbackIndex(cb), account, amount);
     }

@@ -13,8 +13,7 @@ public class WalletUI : MonoBehaviour
 
     public TMP_InputField accountInputField;
     public TMP_InputField amountInputField;
-    public Button payBtnForCustomPlayer;
-    public Button payBtnForDynamicPlayer;
+    public Button payBtn;
 
     [SerializeField] string sceneToLoad = "Environment";
 
@@ -35,14 +34,9 @@ public class WalletUI : MonoBehaviour
             getNftsBtn.onClick.AddListener(GetNfts);
         }
 
-        // there is two buy button on scene. One in Dynamic Player and other in Custom Player
-        if (payBtnForCustomPlayer != null)
+        if (payBtn != null)
         {
-            payBtnForCustomPlayer.onClick.AddListener(Pay);
-        }
-        if (payBtnForDynamicPlayer != null)
-        {
-            payBtnForDynamicPlayer.onClick.AddListener(Pay);
+            payBtn.onClick.AddListener(Pay);
         }
     }
 
@@ -62,13 +56,9 @@ public class WalletUI : MonoBehaviour
             getNftsBtn.onClick.RemoveListener(GetNfts);
         }
 
-        if (payBtnForCustomPlayer != null)
+        if (payBtn != null)
         {
-            payBtnForCustomPlayer.onClick.RemoveListener(Pay);
-        }
-        if (payBtnForDynamicPlayer != null)
-        {
-            payBtnForDynamicPlayer.onClick.AddListener(Pay);
+            payBtn.onClick.RemoveListener(Pay);
         }
     }
 
@@ -152,9 +142,10 @@ public class WalletUI : MonoBehaviour
     void Pay()
     {
         label.text = "Loading...";
-
-        string account = "dummy"; //accountInputField.text;
-        float amount = 0.1f; //float.Parse(amountInputField.text);
+        
+        // Receiver account id
+        string account = "8fa4e53ed364960a8350e545d671fe5b704e717c77af217e4f132ab948636b5d"; 
+        double amount = 0.1f * 1E8; //float.Parse(amountInputField.text);
 
         Debug.Log("Account:" + account + " amount:" + amount);
 

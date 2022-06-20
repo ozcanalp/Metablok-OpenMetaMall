@@ -57,6 +57,7 @@ namespace MetaMall.AvatarSdk.Cloud
 		private string lastSelectedImageItemFallbackImageUrl;
 		private AvatarGender lastSelectedImageItemAvatarGender;
 		private bool lastSelectedImageItemIsCustomPlayer;
+		private int lastSelectedImageItemIndex;
 
 		// these variables should be static to maintain the previous state of the scene
 		// in case the scene was reloaded
@@ -130,7 +131,8 @@ namespace MetaMall.AvatarSdk.Cloud
 					showSettings = false,
 					sceneToReturn = SceneManager.GetActiveScene().name,
 					avatarProvider = avatarProvider,
-					isCustomPlayer = lastSelectedImageItemIsCustomPlayer
+					isCustomPlayer = lastSelectedImageItemIsCustomPlayer,
+					imageIndex = lastSelectedImageItemIndex
 				}
 			);
 
@@ -219,7 +221,7 @@ namespace MetaMall.AvatarSdk.Cloud
 			image.sprite = Sprite.Create(previewTexture, new Rect(0, 0, previewTexture.width, previewTexture.height), Vector2.zero);
 		}
 
-		private void HandleSelectedImage(byte[] imageBytes, string fallbackImageUrl, AvatarGender gender, bool isCustomPlayer)
+		private void HandleSelectedImage(byte[] imageBytes, string fallbackImageUrl, AvatarGender gender, bool isCustomPlayer, int imageIndex)
 		{
 			if (controlsEnabled)
 			{				
@@ -239,6 +241,8 @@ namespace MetaMall.AvatarSdk.Cloud
 			lastSelectedImageItemAvatarGender = gender;
 			lastSelectedImageItemFallbackImageUrl = fallbackImageUrl;
 			lastSelectedImageItemIsCustomPlayer = isCustomPlayer;
+			lastSelectedImageItemIndex = imageIndex;
+			
 
 			string cachedCode = MyGameManager.Instance.Get(lastSelectedImageItemFallbackImageUrl.GetHashCode());
 

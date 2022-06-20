@@ -12,7 +12,7 @@ public static class PlugUtilsInternal
     public static extern void GetPlugNfts(int cbIndex);
 
     [DllImport("__Internal")]
-    public static extern void Pay(int cbIndex, string account, float amount);
+    public static extern void Pay(int cbIndex, string account, double amount);
 }
 
 public static class PlugUtils
@@ -34,7 +34,7 @@ public static class PlugUtils
         PlugUtilsInternal.GetPlugNfts(cbIndex);
 #endif
     }
-    public static void Pay(int cbIndex, string account, float amount)
+    public static void Pay(int cbIndex, string account, double amount)
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         PlugUtilsInternal.Pay(cbIndex, account, amount);

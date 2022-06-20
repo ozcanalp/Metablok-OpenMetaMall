@@ -23,6 +23,11 @@ public class PlayerLook : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
     }
 
+    private void Start()
+    {
+        itemInspector = GameObject.FindGameObjectWithTag("ItemInspector").GetComponent<ItemInspector>();
+    }
+
     public void GetFireInput(InputAction.CallbackContext context)
     {
         if (PV.IsMine)
@@ -34,7 +39,7 @@ public class PlayerLook : MonoBehaviour
 
     void ShootRaycast()
     {
-        if(currentlyInspecting == true)
+        if (currentlyInspecting == true)
             return;
 
         Ray ray = cam.ScreenPointToRay(crosshair.transform.position);

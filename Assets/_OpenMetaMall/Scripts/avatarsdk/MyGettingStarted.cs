@@ -36,6 +36,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 			public bool showSettings = true;
 			public bool useAnimations = true;
 			public bool isCustomPlayer = false;
+			public int imageIndex = 1;
 		};
 
 		// Parameters needed to initialize scene and show avatar. Should be set before the scene loading

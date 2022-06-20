@@ -67,7 +67,10 @@ namespace ItSeez3D.AvatarSdkSamples.Core
         private GameObject avatarHolder;
         [SerializeField] string sceneToLoad = "Environment";
 
-		[SerializeField] GameObject customPlayer;
+        [SerializeField] GameObject customPlayer;
+
+        [SerializeField] string avatarCode;
+        public string AvatarCode { get { return avatarCode; } set { avatarCode = value; } }
 
         #region public methods
         public MyFullbodyParameters()
@@ -184,12 +187,12 @@ namespace ItSeez3D.AvatarSdkSamples.Core
                 Debug.LogFormat("Init Params:Loading Avatar:" + initParams.avatarCode);
             }
 
-            if ((SceneManager.GetActiveScene().name == "Environment") 
-			&& initParams != null && initParams.isCustomPlayer)
+            if ((SceneManager.GetActiveScene().name == "Environment")
+            && initParams != null && initParams.isCustomPlayer)
             {
-				Debug.Log("activate custom player");
-                customPlayer.SetActive(true);
-                this.gameObject.transform.parent.gameObject.SetActive(false);
+                Debug.Log("activate custom player");
+                //customPlayer.SetActive(true);
+                //this.gameObject.transform.parent.gameObject.SetActive(false);
             }
             else
             {
@@ -244,7 +247,18 @@ namespace ItSeez3D.AvatarSdkSamples.Core
             // var initializeRequest = fullbodyAvatarProvider.InitializeFullbodyAvatarAsync(photoBytes, computationParameters, selectedPipelineType);
             // yield return Await(initializeRequest);
             // currentAvatarCode = initializeRequest.Result;
-            currentAvatarCode = initParams != null ? initParams.avatarCode : "d1c2781c-306f-4df7-b1b8-e10af99e396b";
+
+            if (SceneManager.GetActiveScene().name == "Avatar Viewer")
+            {
+                currentAvatarCode = initParams != null ? initParams.avatarCode : "d1c2781c-306f-4df7-b1b8-e10af99e396b";
+
+            }
+            else if (SceneManager.GetActiveScene().name == "Environment")
+            {
+                currentAvatarCode = initParams != null ? avatarCode : "d1c2781c-306f-4df7-b1b8-e10af99e396b";
+
+            }
+
 
             StartCoroutine(SampleUtils.DisplayPhotoPreview(currentAvatarCode, photoPreview));
 
@@ -430,7 +444,22 @@ namespace ItSeez3D.AvatarSdkSamples.Core
 
             GameObject avatarObject = new GameObject(AVATAR_OBJECT_NAME);
             avatarObject.SetActive(false);
-            avatarObject.transform.parent = avatarHolder.transform;
+
+
+            if (SceneManager.GetActiveScene().name == "Avatar Viewer")
+            {
+                avatarObject.transform.parent = avatarHolder.transform;
+            }
+            else
+            {
+                //GameObject[] SupernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
+                //avatarObject.transform.parent = SupernovaPlayers[SupernovaPlayers.Length-1].transform;
+                avatarObject.transform.parent = GameManager.Instance.avatars[avatarCode].gameObject.transform;
+                GameManager.Instance.avatars[avatarCode].gameObject.GetComponent<DynamicAvatarFinder>().DynamicAvatar = avatarObject;
+
+                //avatarObject.transform.parent = GameManager.Instance.lastCreatedDynamicAvatar.transform;
+            }
+
             avatarObject.transform.localPosition = Vector3.zero;
 
             if (computationParameters.template == ExportTemplate.HEAD)
@@ -535,6 +564,9 @@ namespace ItSeez3D.AvatarSdkSamples.Core
                         bodyAnimationManager.standOnHeels = outfitsWithHeels.Contains(outfitName);
                     };
                 }
+
+
+
             }
         }
 
