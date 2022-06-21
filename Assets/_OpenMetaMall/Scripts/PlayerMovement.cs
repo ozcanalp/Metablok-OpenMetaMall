@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
 using System;
+using ExitGames.Client.Photon;
+using Photon.Realtime;
+using ItSeez3D.AvatarSdkSamples.Core;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movementInput;
     Vector3 movement;
     Vector3 moveDir;
+    Vector3 gravity = Physics.gravity;
 
     public event Action<bool> OnWalking = delegate { };
 
@@ -38,13 +42,31 @@ public class PlayerMovement : MonoBehaviour
 
     public void GetMovementInput(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            SendWalkingAnimation(true);
+        }
+        else if (context.canceled)
+        {
+            SendWalkingAnimation(false);
+        }
+
         movementInput = context.ReadValue<Vector2>();
+    }
+
+    void SendWalkingAnimation(bool isWalking)
+    {
+        byte eventCode = 197; // make up event codes at will
+        object[] content = new object[] { MyGettingStarted.initParams.avatarCode ,isWalking }; // Array contains the target position and the IDs of the selected units
+        System.Collections.Hashtable evData = new System.Collections.Hashtable(); // put your data into a key-value hashtable
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others }; // You would have to set the Receivers to All in order to receive this event on the local client as well
+
+        PhotonNetwork.RaiseEvent(eventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
     void Move(Vector2 movementInput)
     {
         movement.x = movementInput.x;
-        movement.y = 0;
         movement.z = movementInput.y;
 
         if (movement.magnitude > 0.1f)
@@ -52,9 +74,9 @@ public class PlayerMovement : MonoBehaviour
             float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             playerTransform.rotation = Quaternion.Euler(0f, angle, 0f);
-
             moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            characterController.Move(moveDir.normalized * Time.deltaTime * movementSpeed);
+
+            characterController.Move((moveDir.normalized + gravity) * Time.deltaTime * movementSpeed);
             OnWalking(true);
         }
         else

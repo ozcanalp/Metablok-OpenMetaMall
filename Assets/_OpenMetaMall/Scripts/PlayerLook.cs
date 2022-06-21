@@ -10,9 +10,10 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] PhotonView PV;
     [SerializeField] GameObject crosshair;
     [SerializeField] Camera cam;
-    [SerializeField] float interactionDistance = 15;
+    [SerializeField] ItemInspector itemInspector;
+    [SerializeField] float interactionDistance = 10f;
 
-    public event Action<InspectableObject> OnObjectInspect = delegate { };
+    public bool currentlyInspecting = false;
 
     RaycastHit hitInfo;
 
@@ -20,6 +21,11 @@ public class PlayerLook : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         cam = GetComponentInChildren<Camera>();
+    }
+
+    private void Start()
+    {
+        itemInspector = GameObject.FindGameObjectWithTag("ItemInspector").GetComponent<ItemInspector>();
     }
 
     public void GetFireInput(InputAction.CallbackContext context)
@@ -33,6 +39,9 @@ public class PlayerLook : MonoBehaviour
 
     void ShootRaycast()
     {
+        if (currentlyInspecting == true)
+            return;
+
         Ray ray = cam.ScreenPointToRay(crosshair.transform.position);
         Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.blue, 1f);
         if (Physics.Raycast(ray, out hitInfo, interactionDistance))
@@ -41,7 +50,7 @@ public class PlayerLook : MonoBehaviour
             if (hitObject != null)
             {
                 Debug.Log(hitObject.name);
-                OnObjectInspect(hitObject);
+                itemInspector.StartInspectObject(hitObject);
             }
         }
     }

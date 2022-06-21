@@ -11,10 +11,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerLook playerLook;
     [SerializeField] CinemachineInputProvider cinemachineInputProvider;
+    [SerializeField] Canvas playerHud;
+
+    private void Awake()
+    {
+        itemInspector = GameObject.FindGameObjectWithTag("ItemInspector").GetComponent<ItemInspector>();
+    }
 
     private void Reset()
     {
-        itemInspector = GetComponentInChildren<ItemInspector>();
         playerMovement = GetComponent<PlayerMovement>();
         playerLook = GetComponent<PlayerLook>();
         cinemachineInputProvider = GetComponentInChildren<CinemachineInputProvider>();
@@ -22,7 +27,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Reset();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerLook = GetComponent<PlayerLook>();
+        cinemachineInputProvider = GetComponentInChildren<CinemachineInputProvider>();
     }
 
     private void OnEnable()
@@ -38,18 +45,29 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePlayerComponent(bool obj)
     {
-        Debug.Log(obj);
+        if (cinemachineInputProvider == null)
+        {
+            cinemachineInputProvider = GetComponentInChildren<CinemachineInputProvider>();
+            
+            if (cinemachineInputProvider == null)
+                return;
+        }
+
         if (!obj)
         {
             playerMovement.enabled = false;
+            playerLook.currentlyInspecting = true;
             playerLook.enabled = false;
             cinemachineInputProvider.enabled = false;
+            playerHud.enabled = false;
         }
         else
         {
             playerMovement.enabled = true;
+            playerLook.currentlyInspecting = false;
             playerLook.enabled = true;
             cinemachineInputProvider.enabled = true;
+            playerHud.enabled = true;
         }
     }
 }

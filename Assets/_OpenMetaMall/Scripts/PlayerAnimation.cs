@@ -6,20 +6,20 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] Animator anim;
+    [SerializeField] PlayerMovement playerMovement;
 
     private void OnEnable()
     {
-        GetComponent<PlayerMovement>().OnWalking += MovementAnimation;
+        playerMovement.OnWalking += MovementAnimation;
     }
 
     private void OnDisable()
     {
-        GetComponent<PlayerMovement>().OnWalking -= MovementAnimation;
+        playerMovement.OnWalking -= MovementAnimation;
     }
 
     private void MovementAnimation(bool isWalking)
     {
-        //Debug.Log("IsWalking: " + isWalking);
-        anim.SetBool("IsWalking", isWalking);
+        anim.SetBool("Walking", isWalking);
     }
 }

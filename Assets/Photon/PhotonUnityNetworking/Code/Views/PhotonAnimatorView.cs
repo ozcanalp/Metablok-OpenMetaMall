@@ -78,7 +78,7 @@ namespace Photon.Pun
 
         private bool TriggerUsageWarningDone;
         
-        private Animator m_Animator;
+        protected Animator m_Animator;
 
         private PhotonStreamQueue m_StreamQueue = new PhotonStreamQueue(120);
 

@@ -1,40 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using ItSeez3D.AvatarSdkSamples.Core;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerNetworkController : MonoBehaviour
+public class PlayerNetworkController : MonoBehaviourPunCallbacks
 {
     [SerializeField] PhotonView PV;
-    [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] CinemachineFreeLook cinemachineFreeLook;
-    [SerializeField] Camera cam;
-    [SerializeField] Camera itemInspectorCamera;
 
-    [SerializeField] GameObject ThirdPerson;
-    [SerializeField] GameObject VR;
+    [SerializeField] PlayerInput playerInput;
+    [SerializeField] GameObject camera;
+    [SerializeField] GameObject cinemachineFreeLook;
 
-    void Start()
+    [SerializeField] GameObject dynamicCharacter;
+    [SerializeField] GameObject customCharacter;
+    [SerializeField] GameObject defaultCharacter;
+
+    [SerializeField] GameObject Avatars;
+
+    CharacterController characterController;
+
+    void Awake()
     {
+        characterController = GetComponent<CharacterController>();
+        DisableAllPlayerObjects();
+
         if (!PV.IsMine)
         {
-            playerMovement.enabled = false;
-            cinemachineFreeLook.enabled = false;
-            cam.enabled = false;
-            itemInspectorCamera.enabled = false;
-
-            ThirdPerson.SetActive(true);
+            playerInput.enabled = false;
+            camera.SetActive(false);
+            cinemachineFreeLook.SetActive(false);
         }
         else
         {
+            EnablePlayer();
+        }
+    }
 
-#if UNITY_EDITOR
-            VR.SetActive(true);
+    void DisableAllPlayerObjects()
+    {
+        //Supernova Dynamic Player
+        dynamicCharacter.SetActive(false);
+        /* customCharacter.SetActive(false);
+        defaultCharacter.SetActive(false); */
 
-#elif UNITY_WEBGL
-            ThirdPerson.SetActive(true);
-#endif
+        foreach (Transform avatar in Avatars.transform)
+        {
+            avatar.gameObject.SetActive(false);
+        }
+    }
+
+    void EnablePlayer()
+    {
+        if (MyGettingStarted.initParams != null && MyGettingStarted.initParams.isCustomPlayer)
+        {
+            customCharacter.SetActive(true);
+            GameManager.Instance.avatarType = GameManager.AVATAR_TYPES.Custom;
+        }
+        else
+        {
+            dynamicCharacter.SetActive(true);
+            GameManager.Instance.avatarType = GameManager.AVATAR_TYPES.Dynamic;
         }
     }
 
