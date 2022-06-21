@@ -12,6 +12,7 @@ public class CallbackResponse
 public class RequestPlugConnectResponse
 {
     [Preserve] public string result;
+    [Preserve] public string error;
 }
 
 [Preserve]

@@ -1175,7 +1175,31 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: 12
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -1184,7 +1208,43 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -9007,8 +9067,8 @@ TextureImporter:
       icon_search_24_Filled: 6338432638553648094
       icon_guardian-off_24_Filled: 4527341719653884531
       icon_oculus-remote_24_Filled: -7589402062981936895
-      icon_standing_24_Filled: 7454949134030985154
       icon_video-capture_24_Filled: 4280716520158885396
+      icon_standing_24_Filled: 7454949134030985154
       icon_uppercase-arrow_24_Filled: -4282686005434553579
       icon_party-invite-cancel_24_Filled: 3961880792152693728
       icon_volume-mid_24_Filled: -4563869462876885445
@@ -9019,8 +9079,8 @@ TextureImporter:
       icon_google-cast-three_24_Filled: -3162484286153515436
       icon_gallery-reconnect_24_Filled: 759157470041553951
       icon_airplane-mode_24_Filled: -7534710504798566327
-      icon_gear-vr-controller_24_Filled: -7098132386162666911
       icon_voice-assistant_24_Filled: 8934357958956142952
+      icon_gear-vr-controller_24_Filled: -7098132386162666911
       icon_image_24_Filled: -3489210899032413267
       icon_mobile-keyboard_24_Filled: 1038524361926299967
       icon_pass-through_24_Filled: -6993032067818180076
@@ -9090,12 +9150,12 @@ TextureImporter:
       icon_google-cast-off_24_Filled: 2362007950884984116
       icon_thumbs-up_24_Filled: 5487809786283018963
       icon_send_24_Filled: -4375416705679505549
-      icon_apps_24_Filled: 1292306900231802415
       icon_gpu_24_Filled: 3881175187297326243
+      icon_apps_24_Filled: 1292306900231802415
+      icon_question_24_Filled: -293917228402888240
       icon_bt-b_24_Filled: 3454290907360376031
       icon_resize-horizontal_24_Filled: -3741454658406442728
       icon_clothing_24_Filled: 28602928128512832
-      icon_question_24_Filled: -293917228402888240
       icon_controller-mid-high_24_Filled: -3703553657351858696
       icon_phone_24_Filled: -548012798766286797
       icon_cell-signal-empty_24_Filled: 4037453128129270036
@@ -9109,13 +9169,13 @@ TextureImporter:
       icon_stop-circle_24_Filled: 2085675107433140441
       icon_pacific-controller_24_Filled: 2344902134053541320
       icon_screen-brightness-low_24_Filled: -2036684889620811239
-      icon_controller-empty_24_Filled: 4346250981499648338
       icon_table_24_Filled: 8957852194325186671
-      icon_width-medium_24_Filled: 6214189822940339066
+      icon_controller-empty_24_Filled: 4346250981499648338
       icon_set-ceiling_24_Filled: -1058920082160313458
-      icon_gift_24_Filled: -151341207521194955
-      icon_images-360_24_Filled: 5225451966097692291
       icon_computer_24_Filled: 4652023786671844652
+      icon_images-360_24_Filled: 5225451966097692291
+      icon_width-medium_24_Filled: 6214189822940339066
+      icon_gift_24_Filled: -151341207521194955
       icon_bt-y_24_Filled: -2755530517072406904
       icon_remove-circle_24_Filled: 7044510899877845267
       icon_controller-mid_24_Filled: 8988702310887321883
@@ -9274,10 +9334,10 @@ TextureImporter:
       icon_email_24_Filled: 889206100452342178
       icon_google-cast-one_24_Filled: 8067105794626459936
       icon_unknown-controller_24_Filled: 4696544637600193522
-      icon_play-next-circle_24_Filled: 6926759831577550321
       icon_lock_24_Filled: -1117739728465955824
-      icon_battery-alt-charge_24_Filled: 7233657520953559174
       icon_physicalfeatures_24_Filled: 153058122297662584
+      icon_play-next-circle_24_Filled: 6926759831577550321
+      icon_battery-alt-charge_24_Filled: 7233657520953559174
       icon_media-360-3d_24_Filled: -5339237105343141203
       icon_resize-horizontal-down_24_Filled: -1296525972987437459
       icon_keyboard-space_24_Filled: -8154806901523153331

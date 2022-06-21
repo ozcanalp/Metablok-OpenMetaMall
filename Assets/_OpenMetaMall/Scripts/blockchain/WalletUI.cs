@@ -108,8 +108,15 @@ public class WalletUI : MonoBehaviour
             return;
         }
 
-        label.text = "Requested Plug Connection with response of: " + response.result;
-        SceneManager.LoadScene(sceneToLoad);
+        if (response.result == "allowed" || response.result == "true")
+        {
+            label.text = "Requested Plug Connection with response of: " + response.result;
+            SceneManager.LoadScene(sceneToLoad);
+        }
+        else
+        {
+            label.text = response.result + " " + response.error;
+        }
     }
 
     void GetNfts()
@@ -143,9 +150,9 @@ public class WalletUI : MonoBehaviour
     void Pay()
     {
         label.text = "Loading...";
-        
+
         // Receiver account id
-        string account = "8fa4e53ed364960a8350e545d671fe5b704e717c77af217e4f132ab948636b5d"; 
+        string account = "8fa4e53ed364960a8350e545d671fe5b704e717c77af217e4f132ab948636b5d";
         double amount = 0.1f * 1E8; //float.Parse(amountInputField.text);
 
         Debug.Log("Account:" + account + " amount:" + amount);
