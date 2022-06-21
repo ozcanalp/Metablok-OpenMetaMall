@@ -153,7 +153,8 @@ public class WalletUI : MonoBehaviour
 
         // Receiver account id
         string account = "8fa4e53ed364960a8350e545d671fe5b704e717c77af217e4f132ab948636b5d";
-        double amount = 0.1f * 1E8; //float.Parse(amountInputField.text);
+        
+        double amount = 0.1f; //float.Parse(amountInputField.text);
 
         Debug.Log("Account:" + account + " amount:" + amount);
 

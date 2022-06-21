@@ -27,7 +27,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Reset();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerLook = GetComponent<PlayerLook>();
+        cinemachineInputProvider = GetComponentInChildren<CinemachineInputProvider>();
     }
 
     private void OnEnable()
@@ -43,6 +45,14 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePlayerComponent(bool obj)
     {
+        if (cinemachineInputProvider == null)
+        {
+            cinemachineInputProvider = GetComponentInChildren<CinemachineInputProvider>();
+            
+            if (cinemachineInputProvider == null)
+                return;
+        }
+
         if (!obj)
         {
             playerMovement.enabled = false;
