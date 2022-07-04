@@ -187,7 +187,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
                 Debug.LogFormat("Init Params:Loading Avatar:" + initParams.avatarCode);
             }
 
-            if ((SceneManager.GetActiveScene().name == "Environment")
+            if ((SceneManager.GetActiveScene().name == sceneToLoad)
             && initParams != null && initParams.isCustomPlayer)
             {
                 Debug.Log("activate custom player");
@@ -253,7 +253,7 @@ namespace ItSeez3D.AvatarSdkSamples.Core
                 currentAvatarCode = initParams != null ? initParams.avatarCode : "d1c2781c-306f-4df7-b1b8-e10af99e396b";
 
             }
-            else if (SceneManager.GetActiveScene().name == "Environment")
+            else if (SceneManager.GetActiveScene().name == sceneToLoad)
             {
                 currentAvatarCode = initParams != null ? avatarCode : "d1c2781c-306f-4df7-b1b8-e10af99e396b";
 

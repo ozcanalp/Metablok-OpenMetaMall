@@ -15,7 +15,7 @@ public class WalletUI : MonoBehaviour
     public TMP_InputField amountInputField;
     public Button payBtn;
 
-    [SerializeField] string sceneToLoad = "Environment";
+    [SerializeField] string sceneToLoad = "MetaBlok";
 
     void Start()
     {
