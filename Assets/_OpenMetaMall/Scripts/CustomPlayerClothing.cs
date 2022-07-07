@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class CustomPlayerClothing : MonoBehaviour
@@ -22,6 +23,9 @@ public class CustomPlayerClothing : MonoBehaviour
 
     private void Start()
     {
+        if(false == GetComponentInParent<PhotonView>().IsMine)
+            return;
+
         clothingObjects = GameObject.Find("Clothing Objects");
 
         foreach (Transform child in clothingObjects.transform)

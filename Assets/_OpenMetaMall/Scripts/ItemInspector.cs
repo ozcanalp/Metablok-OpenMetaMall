@@ -22,12 +22,12 @@ public class ItemInspector : MonoBehaviour
     public void StartInspectObject(InspectableObject obj)
     {
 
-        if (GameManager.Instance.avatarType == GameManager.AVATAR_TYPES.Dynamic)
+        /* if (SupernovaGameManager.Instance.avatarType == SupernovaGameManager.AVATAR_TYPES.Dynamic)
         {
             btn_Try.gameObject.SetActive(false);
-        }
+        } */
 
-        GameManager.Instance.ShowCursor();
+        TronGameManager.Instance.ShowCursor();
 
         OnItemInspect(false);
 
@@ -51,7 +51,10 @@ public class ItemInspector : MonoBehaviour
         if (inspectingObject.GetComponent<ClothingObject>())
         {
             clothingObject = inspectingObject.GetComponent<ClothingObject>();
+            
+
             btn_Try.onClick.AddListener((clothingObject).WearItem);
+
         }
 
         dragRotationArea.GetComponent<InspectingObjectRotation>().objectToRotate = inspectingObjectTransform;
@@ -66,7 +69,7 @@ public class ItemInspector : MonoBehaviour
 
         progressText.text = "";
 
-        GameManager.Instance.HideCursor();
+        TronGameManager.Instance.HideCursor();
     }
 
     public void SetLayerRecursively(GameObject obj, int layer)

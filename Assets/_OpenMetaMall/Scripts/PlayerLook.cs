@@ -49,10 +49,8 @@ public class PlayerLook : MonoBehaviour
             InspectableObject hitObject = hitInfo.collider.GetComponent<InspectableObject>();
             if (hitObject != null)
             {
-                Debug.Log(hitObject.name);
                 itemInspector.StartInspectObject(hitObject);
             }
         }
     }
-
 }

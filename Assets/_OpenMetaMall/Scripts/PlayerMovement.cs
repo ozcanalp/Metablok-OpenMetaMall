@@ -42,28 +42,29 @@ public class PlayerMovement : MonoBehaviour
 
     public void GetMovementInput(InputAction.CallbackContext context)
     {
-        if (context.started)
+       /*  if (context.started)
         {
             SendWalkingAnimation(true);
         }
         else if (context.canceled)
         {
             SendWalkingAnimation(false);
-        }
+        } 
+        */
 
         movementInput = context.ReadValue<Vector2>();
     }
+    /* 
+        void SendWalkingAnimation(bool isWalking)
+        {
+            byte eventCode = 197; // make up event codes at will
+            object[] content = new object[] { MyGettingStarted.initParams.avatarCode ,isWalking }; // Array contains the target position and the IDs of the selected units
+            System.Collections.Hashtable evData = new System.Collections.Hashtable(); // put your data into a key-value hashtable
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others }; // You would have to set the Receivers to All in order to receive this event on the local client as well
 
-    void SendWalkingAnimation(bool isWalking)
-    {
-        byte eventCode = 197; // make up event codes at will
-        object[] content = new object[] { MyGettingStarted.initParams.avatarCode ,isWalking }; // Array contains the target position and the IDs of the selected units
-        System.Collections.Hashtable evData = new System.Collections.Hashtable(); // put your data into a key-value hashtable
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others }; // You would have to set the Receivers to All in order to receive this event on the local client as well
-
-        PhotonNetwork.RaiseEvent(eventCode, content, raiseEventOptions, SendOptions.SendReliable);
-    }
-
+            PhotonNetwork.RaiseEvent(eventCode, content, raiseEventOptions, SendOptions.SendReliable);
+        }
+     */
     void Move(Vector2 movementInput)
     {
         movement.x = movementInput.x;

@@ -454,8 +454,8 @@ namespace ItSeez3D.AvatarSdkSamples.Core
             {
                 //GameObject[] SupernovaPlayers = GameObject.FindGameObjectsWithTag("SupernovaPlayer");
                 //avatarObject.transform.parent = SupernovaPlayers[SupernovaPlayers.Length-1].transform;
-                avatarObject.transform.parent = GameManager.Instance.avatars[avatarCode].gameObject.transform;
-                GameManager.Instance.avatars[avatarCode].gameObject.GetComponent<DynamicAvatarFinder>().DynamicAvatar = avatarObject;
+                avatarObject.transform.parent = SupernovaGameManager.Instance.avatars[avatarCode].gameObject.transform;
+                SupernovaGameManager.Instance.avatars[avatarCode].gameObject.GetComponent<DynamicAvatarFinder>().DynamicAvatar = avatarObject;
 
                 //avatarObject.transform.parent = GameManager.Instance.lastCreatedDynamicAvatar.transform;
             }
