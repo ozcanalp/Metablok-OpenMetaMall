@@ -8,7 +8,6 @@ public class CustomPlayerClothing : MonoBehaviour
     [SerializeField] GameObject hat1;
     [SerializeField] GameObject hat2;
     [SerializeField] GameObject hat3;
-    [SerializeField] GameObject hat4;
 
     [SerializeField] GameObject left_shoe1;
     [SerializeField] GameObject left_shoe2;
@@ -39,8 +38,6 @@ public class CustomPlayerClothing : MonoBehaviour
                     hatClothing.hat = hat2;
                 if (hatClothing.name == "hat3")
                     hatClothing.hat = hat3;
-                if (hatClothing.name == "hat4")
-                    hatClothing.hat = hat4;
             }
             else if (child.GetComponent<ShoeClothing>())
             {
