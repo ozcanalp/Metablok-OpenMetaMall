@@ -51,6 +51,14 @@ public class PlayerLook : MonoBehaviour
             {
                 itemInspector.StartInspectObject(hitObject);
             }
+
+            EnterAuction enterAuction;
+            if (hitInfo.collider.TryGetComponent<EnterAuction>(out enterAuction))
+            {
+                FindObjectOfType<PlayerAuctionController>().ShowEnterAuctionCanvas();
+                //GetComponent<PlayerController>().HandlePlayerComponent(false);
+            }
+
         }
     }
 }

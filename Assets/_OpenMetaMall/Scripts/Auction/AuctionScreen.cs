@@ -7,6 +7,10 @@ using System.Collections;
 
 public class AuctionScreen : MonoBehaviourPunCallbacks
 {
+    public AuctionScreen Instance;
+
+    public event Action OnAuctionCountDownEnd = delegate { };
+
     [SerializeField] PhotonView PV;
 
     List<Bid> lastBids;
@@ -19,10 +23,18 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField walletInput;
     [SerializeField] TMP_InputField amountInput;
 
-    [SerializeField] const int TimerInSecond = 120;
+    [SerializeField] const int TimerInSecond = 5;
     int timer;
 
     Coroutine countDownRoutine;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
+    }
 
     void Start()
     {
@@ -83,6 +95,8 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
             UpdateCountDownUI();
             yield return new WaitForSeconds(1f);
         }
+        
+        OnAuctionCountDownEnd();
     }
 
     [PunRPC]

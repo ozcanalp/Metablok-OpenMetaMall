@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         itemInspector.OnItemInspect -= HandlePlayerComponent;
     }
 
-    private void HandlePlayerComponent(bool obj)
+    public void HandlePlayerComponent(bool obj)
     {
         if (cinemachineInputProvider == null)
         {
