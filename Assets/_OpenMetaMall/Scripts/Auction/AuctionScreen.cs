@@ -7,9 +7,10 @@ using System.Collections;
 
 public class AuctionScreen : MonoBehaviourPunCallbacks
 {
-    public AuctionScreen Instance;
+    public static AuctionScreen Instance;
 
     public event Action OnAuctionCountDownEnd = delegate { };
+    public event Action OnStandUp = delegate { };
 
     [SerializeField] PhotonView PV;
 
@@ -27,6 +28,7 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
     int timer;
 
     Coroutine countDownRoutine;
+
 
     private void Awake()
     {
@@ -47,6 +49,12 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
         //Bid newBid = new Bid(walletInput.text, amountInput.text, DateTime.Now.ToString("HH:mm:ss"));
         //AddNewLastBid(newBid);
         PV.RPC("AddNewLastBid", RpcTarget.AllBuffered, walletInput.text, amountInput.text, DateTime.Now.ToString("HH:mm:ss"));
+        OnStandUp();
+    }
+
+    public void StandUp()
+    {
+        OnStandUp();
     }
 
     [PunRPC]
