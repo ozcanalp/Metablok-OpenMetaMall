@@ -36,5 +36,7 @@ public class TronPhotonNetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("JoinedRoom");
         GameObject myTronPlayer = PhotonNetwork.Instantiate(playerPrefabs[Random.Range(0, playerPrefabs.Length)].gameObject.name, spawnPosition.position, spawnPosition.rotation);
+
+        //StartCoroutine(TronAPI.Instance.GetBids("TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax"));
     }
 }

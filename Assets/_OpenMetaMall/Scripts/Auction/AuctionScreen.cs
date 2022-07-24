@@ -24,7 +24,7 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField walletInput;
     [SerializeField] TMP_InputField amountInput;
 
-    [SerializeField] const int TimerInSecond = 5;
+    [SerializeField] const int TimerInSecond = 120;
     int timer;
 
     Coroutine countDownRoutine;
@@ -38,18 +38,28 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
             Instance = this;
     }
 
-    void Start()
+    IEnumerator Start()
     {
         PV = GetComponent<PhotonView>();
         lastBids = new List<Bid>();
+
+        yield return new WaitForSeconds(3);
+
+        if (lastBids.Count <= 0)
+            StartCoroutine(TronAPI.Instance.GetBids("TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax"));
     }
 
     public void AddBidWithUIButton()
     {
         //Bid newBid = new Bid(walletInput.text, amountInput.text, DateTime.Now.ToString("HH:mm:ss"));
         //AddNewLastBid(newBid);
-        PV.RPC("AddNewLastBid", RpcTarget.AllBuffered, walletInput.text, amountInput.text, DateTime.Now.ToString("HH:mm:ss"));
-        OnStandUp();
+
+        if (!(lastBids.Count > 0) || int.Parse(lastBids[lastBids.Count - 1].BidAmount) < int.Parse(amountInput.text))
+        {
+            StartCoroutine(TronAPI.Instance.GiveBid(amountInput.text, "TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax"));
+            OnStandUp();
+        }
+
     }
 
     public void StandUp()
@@ -57,10 +67,15 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
         OnStandUp();
     }
 
+    public void AddLastBidToScreen(string bidder, string amount)
+    {
+        PV.RPC("AddNewLastBid", RpcTarget.AllBuffered, bidder, amount, DateTime.Now.ToString("HH:mm:ss"));
+    }
+
     [PunRPC]
     void AddNewLastBid(string walletId, string amount, string time)
     {
-        Bid newBid = new Bid(PlayerPrefs.GetString("walletId", "defaultWalletId"), amount, time);
+        Bid newBid = new Bid(walletId, amount, time);
         lastBids.Add(newBid);
         UpdateScreen();
         ResetTimer();
@@ -78,7 +93,7 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
                 break;
 
             Bid bid = lastBids[i];
-            lastBidsText.text += $"{lastBids.Count - i}) {bid.WalletId} - {bid.BidAmount} - {bid.BidTime}\n";
+            lastBidsText.text += $"{lastBids.Count - i}) {bid.BidAmount} - {bid.BidTime} - {bid.WalletId}\n";
         }
     }
 

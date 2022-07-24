@@ -27,21 +27,12 @@ public class Autentication : MonoBehaviour
 
     public void OnClickLoginButton()
     {
-        TronAPI.Instance.Login(email.text, password.text);
+        StartCoroutine(TronAPI.Instance.Login(email.text, password.text));
+
     }
 
     public void OnClickSignUpButton()
     {
-        TronAPI.Instance.SignUp(email.text, password.text);
-    }
-
-    public void OnClickGetBids()
-    {
-        TronAPI.Instance.GetBids("TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax");
-    }
-
-    public void OnClickGiveBid()
-    {
-        TronAPI.Instance.GiveBid("162", "TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax");
+        StartCoroutine(TronAPI.Instance.SignUp(email.text, password.text));
     }
 }

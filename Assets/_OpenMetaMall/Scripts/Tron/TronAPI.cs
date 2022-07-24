@@ -31,6 +31,7 @@ public class TronAPI : MonoBehaviour
     const string loginURI = "https://metabid-server.herokuapp.com/api/v1/users/login";
     const string getBidsURI = "https://metabid-server.herokuapp.com/api/v1/users/get-bids";
     const string giveBidURI = "https://metabid-server.herokuapp.com/api/v1/users/give-bid";
+
     const string testURI = "https://reqres.in/api/login";
 
     public Dictionary<string, string> returnDictionary;
@@ -72,33 +73,26 @@ public class TronAPI : MonoBehaviour
         }
         else
         {
-            //string returnString = req.downloadHandler.text;
-
-            string returnString =
-            "{\"status\": \"success\"," +
-            "\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGM4MGQ5ZGUwOGFjMTRiNWNkZjI1MyIsImlhdCI6MTY1ODY2Mzk5NCwiZXhwIjoxNjY2NDM5OTk0fQ.NznrfXuissCLO6ejYYU17gO_6ljpM-k-1wM79xBSrE0\"," +
-            "\"walletId\": \"123\"}";
-
+            string returnString = req.downloadHandler.text;
             OnResponse(returnString);
-
-            Debug.Log("Received: " + req.downloadHandler.text);
 
             returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
 
-            /* foreach(string key in returnDictionary.Keys)
+            foreach (string key in returnDictionary.Keys)
             {
                 Debug.Log(key + " => " + returnDictionary[key]);
-            } */
+            }
 
             if (returnDictionary["status"] == "success")
             {
                 PlayerPrefs.SetString("walletId", "walletId");
-                SceneManager.LoadSceneAsync("City");
+                PlayerPrefs.SetString("token", returnDictionary["token"]);
+                //SceneManager.LoadSceneAsync("City");
             }
         }
     }
 
-    public void Login(string email, string password)
+    public IEnumerator Login(string email, string password)
     {
         //@TODO: call API login
         // Store Token
@@ -110,10 +104,40 @@ public class TronAPI : MonoBehaviour
 
         string json = JsonUtility.ToJson(user);
 
-        StartCoroutine(APIRequest(loginURI, json, "POST"));
+        var req = new UnityWebRequest(loginURI, "POST");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+        req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+
+
+        Debug.Log("request sent");
+
+        //Send the request then wait here until it returns
+        yield return req.SendWebRequest();
+
+        if (req.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Error While Sending: " + req.error);
+        }
+        else
+        {
+            string returnString = req.downloadHandler.text;
+            OnResponse(returnString);
+
+            returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
+
+            foreach (string key in returnDictionary.Keys)
+            {
+                Debug.Log(key + " => " + returnDictionary[key]);
+            }
+
+            PlayerPrefs.SetString("token", returnDictionary["token"]);
+            SceneManager.LoadSceneAsync("City");
+        }
     }
 
-    public void SignUp(string email, string password)
+    public IEnumerator SignUp(string email, string password)
     {
         //@TODO: call API login
         // Store Token
@@ -125,20 +149,74 @@ public class TronAPI : MonoBehaviour
 
         string json = JsonUtility.ToJson(user);
 
-        StartCoroutine(APIRequest(signupURI, json, "POST"));
+        var req = new UnityWebRequest(signupURI, "POST");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+        req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+
+        //Send the request then wait here until it returns
+        yield return req.SendWebRequest();
+
+        if (req.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Error While Sending: " + req.error);
+        }
+        else
+        {
+            string returnString = req.downloadHandler.text;
+            OnResponse(returnString);
+
+            returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
+
+            foreach (string key in returnDictionary.Keys)
+            {
+                Debug.Log(key + " => " + returnDictionary[key]);
+            }
+
+            PlayerPrefs.SetString("token", returnDictionary["token"]);
+            SceneManager.LoadSceneAsync("City");
+        }
     }
 
-    public void GetBids(string nftAddress)
+    public IEnumerator GetBids(string nftAddress)
     {
         var getBids = new GetBids();
         getBids.nftAddress = nftAddress;
 
         string json = JsonUtility.ToJson(getBids);
 
-        StartCoroutine(APIRequest(getBidsURI, json, "POST"));
+        var req = new UnityWebRequest(getBidsURI, "POST");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+        req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+
+        //Send the request then wait here until it returns
+        yield return req.SendWebRequest();
+
+        if (req.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Error While Sending: " + req.error);
+            Debug.Log("Received: " + req.downloadHandler.text);
+        }
+        else
+        {
+            string returnString = req.downloadHandler.text;
+            OnResponse(returnString);
+
+            returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
+
+            foreach (string key in returnDictionary.Keys)
+            {
+                Debug.Log(key + " => " + returnDictionary[key]);
+            }
+
+            AuctionScreen.Instance.AddLastBidToScreen(returnDictionary["bidder"], returnDictionary["amount"]);
+        }
     }
 
-    public void GiveBid(string amount, string nftAddress)
+    public IEnumerator GiveBid(string amount, string nftAddress)
     {
         var giveBid = new GiveBid();
         giveBid.amount = amount;
@@ -146,6 +224,34 @@ public class TronAPI : MonoBehaviour
 
         string json = JsonUtility.ToJson(giveBid);
 
-        StartCoroutine(APIRequest(giveBidURI, json, "POST", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGM4MGQ5ZGUwOGFjMTRiNWNkZjI1MyIsImlhdCI6MTY1ODYxODA4MiwiZXhwIjoxNjY2Mzk0MDgyfQ.KNjntUsQT8eY_60uqHlXUdB9yxt7hKOIeqxkFgs4geo"));
+        var req = new UnityWebRequest(giveBidURI, "POST");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+        req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+        req.SetRequestHeader("Authorization", "Bearer " + PlayerPrefs.GetString("token"));
+
+        //Send the request then wait here until it returns
+        yield return req.SendWebRequest();
+
+        if (req.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Error While Sending: " + req.error);
+        }
+        else
+        {
+            string returnString = req.downloadHandler.text;
+            OnResponse(returnString);
+
+            returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
+
+            foreach (string key in returnDictionary.Keys)
+            {
+                Debug.Log(key + " => " + returnDictionary[key]);
+            }
+
+            yield return new WaitForSeconds(2);
+            StartCoroutine(GetBids("TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax"));
+        }
     }
 }
