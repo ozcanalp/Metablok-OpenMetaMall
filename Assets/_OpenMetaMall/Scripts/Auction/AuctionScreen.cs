@@ -47,13 +47,12 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
         //Bid newBid = new Bid(walletInput.text, amountInput.text, DateTime.Now.ToString("HH:mm:ss"));
         //AddNewLastBid(newBid);
         PV.RPC("AddNewLastBid", RpcTarget.AllBuffered, walletInput.text, amountInput.text, DateTime.Now.ToString("HH:mm:ss"));
-
     }
 
     [PunRPC]
     void AddNewLastBid(string walletId, string amount, string time)
     {
-        Bid newBid = new Bid(walletId, amount, time);
+        Bid newBid = new Bid(PlayerPrefs.GetString("walletId", "defaultWalletId"), amount, time);
         lastBids.Add(newBid);
         UpdateScreen();
         ResetTimer();
@@ -95,7 +94,7 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
             UpdateCountDownUI();
             yield return new WaitForSeconds(1f);
         }
-        
+
         OnAuctionCountDownEnd();
     }
 
