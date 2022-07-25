@@ -36,7 +36,7 @@ public class TronAPI : MonoBehaviour
 
     public Dictionary<string, string> returnDictionary;
 
-    public event Action<string> OnResponse = delegate { };
+    public event Action<bool> OnResponse = delegate { };
 
     string playerToken;
 
@@ -115,12 +115,12 @@ public class TronAPI : MonoBehaviour
         if (req.result != UnityWebRequest.Result.Success)
         {
             Debug.Log("Error While Sending: " + req.error);
-            Debug.Log("Received: " + req.downloadHandler.text);
+            OnResponse(false);
         }
         else
         {
             string returnString = req.downloadHandler.text;
-            OnResponse(returnString);
+            OnResponse(true);
 
             returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
 
@@ -165,11 +165,12 @@ public class TronAPI : MonoBehaviour
         if (req.result != UnityWebRequest.Result.Success)
         {
             Debug.Log("Error While Sending: " + req.error);
+            OnResponse(false);
         }
         else
         {
             string returnString = req.downloadHandler.text;
-            OnResponse(returnString);
+            OnResponse(true);
 
             returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
 
@@ -208,11 +209,12 @@ public class TronAPI : MonoBehaviour
         if (req.result != UnityWebRequest.Result.Success)
         {
             Debug.Log("Error While Sending: " + req.error);
+            OnResponse(false);
         }
         else
         {
             string returnString = req.downloadHandler.text;
-            OnResponse(returnString);
+            OnResponse(true);
 
             returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
 

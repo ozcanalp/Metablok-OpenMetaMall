@@ -20,9 +20,21 @@ public class Autentication : MonoBehaviour
         TronAPI.Instance.OnResponse -= UpdateResponseText;
     }
 
-    private void UpdateResponseText(string obj)
+    private void UpdateResponseText(bool obj)
     {
-        responseText.text = obj;
+        responseText.gameObject.SetActive(true);
+        //responseText.text = obj;
+        if (obj == true)
+        {
+            responseText.text = "Login Success";
+            responseText.color = Color.green;
+        }
+        else
+        {
+            responseText.text = "Login Failed";
+            responseText.color = Color.red;
+        }
+
     }
 
     public void OnClickLoginButton()
