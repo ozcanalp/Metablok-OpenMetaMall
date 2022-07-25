@@ -34,6 +34,18 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
 
     public bool canBid = true;
 
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        OnAuctionCountDownEnd += TronAPI.Instance.AcceptBidHandler;
+    }
+
+    public override void OnDisable()
+    {
+        base.OnEnable();
+        OnAuctionCountDownEnd -= TronAPI.Instance.AcceptBidHandler;
+    }
+
 
     private void Awake()
     {
@@ -61,7 +73,7 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
 
         if (!(lastBids.Count > 0) || int.Parse(lastBids[lastBids.Count - 1].BidAmount) < int.Parse(amountInput.text))
         {
-            StartCoroutine(TronAPI.Instance.GiveBid(amountInput.text, "TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax"));
+            StartCoroutine(TronAPI.Instance.GiveBid(amountInput.text, "TV4nSngdRknVo1hBngEEZYDc5EZDxVamTJ"));
         }
 
         OnStandUp();

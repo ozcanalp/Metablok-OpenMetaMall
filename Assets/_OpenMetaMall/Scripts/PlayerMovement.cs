@@ -36,21 +36,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (PV.IsMine)
-            Move(movementInput);
+
+        Move(movementInput);
     }
 
     public void GetMovementInput(InputAction.CallbackContext context)
     {
-       /*  if (context.started)
-        {
-            SendWalkingAnimation(true);
-        }
-        else if (context.canceled)
-        {
-            SendWalkingAnimation(false);
-        } 
-        */
+        /*  if (context.started)
+         {
+             SendWalkingAnimation(true);
+         }
+         else if (context.canceled)
+         {
+             SendWalkingAnimation(false);
+         } 
+         */
 
         movementInput = context.ReadValue<Vector2>();
     }

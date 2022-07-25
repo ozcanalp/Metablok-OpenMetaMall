@@ -11,21 +11,18 @@ public class TronPlayerNetworkController : MonoBehaviourPunCallbacks
     [SerializeField] PhotonView PV;
 
     [SerializeField] PlayerInput playerInput;
-    [SerializeField] GameObject camera;
+    [SerializeField] GameObject cam;
     [SerializeField] GameObject cinemachineFreeLook;
 
     [SerializeField] GameObject customCharacter;
 
-    void Awake()
+    void Start()
     {
         if (!PV.IsMine)
         {
             playerInput.enabled = false;
-            camera.SetActive(false);
+            cam.SetActive(false);
             cinemachineFreeLook.SetActive(false);
-        }
-        else
-        {
         }
     }
 }

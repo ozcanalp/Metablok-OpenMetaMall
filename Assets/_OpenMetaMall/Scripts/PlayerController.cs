@@ -75,21 +75,22 @@ public class PlayerController : MonoBehaviour
                 return;
         }
 
-        if (!obj)
-        {
-            playerMovement.enabled = false;
-            playerLook.currentlyInspecting = true;
-            playerLook.enabled = false;
-            cinemachineInputProvider.enabled = false;
-            playerHud.enabled = false;
-        }
-        else
+        if (obj)
         {
             playerMovement.enabled = true;
             playerLook.currentlyInspecting = false;
             playerLook.enabled = true;
             cinemachineInputProvider.enabled = true;
             playerHud.enabled = true;
+        }
+        else
+        {
+            playerMovement.enabled = false;
+            playerLook.currentlyInspecting = true;
+            playerLook.enabled = false;
+            cinemachineInputProvider.enabled = false;
+            playerHud.enabled = false;
+
         }
     }
 }

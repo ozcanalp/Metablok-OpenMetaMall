@@ -12,6 +12,7 @@ public class ItemInspector : MonoBehaviour
     [SerializeField] GameObject dragRotationArea;
     [SerializeField] TextMeshProUGUI itemPriceText;
     [SerializeField] Button btn_Try;
+    [SerializeField] Button btn_Buy;
     [SerializeField] TMP_Text progressText;
 
     GameObject inspectingObject;
@@ -51,10 +52,9 @@ public class ItemInspector : MonoBehaviour
         if (inspectingObject.GetComponent<ClothingObject>())
         {
             clothingObject = inspectingObject.GetComponent<ClothingObject>();
-            
 
             btn_Try.onClick.AddListener((clothingObject).WearItem);
-
+            btn_Buy.onClick.AddListener(TronAPI.Instance.OnClickTransfer);
         }
 
         dragRotationArea.GetComponent<InspectingObjectRotation>().objectToRotate = inspectingObjectTransform;
