@@ -38,6 +38,8 @@ public class TronAPI : MonoBehaviour
 
     public event Action<string> OnResponse = delegate { };
 
+    string playerToken;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -132,7 +134,8 @@ public class TronAPI : MonoBehaviour
                 Debug.Log(key + " => " + returnDictionary[key]);
             }
 
-            PlayerPrefs.SetString("token", returnDictionary["token"]);
+            playerToken = returnDictionary["token"];
+            //PlayerPrefs.SetString("token", returnDictionary["token"]);
             SceneManager.LoadSceneAsync("City");
         }
     }
@@ -174,7 +177,8 @@ public class TronAPI : MonoBehaviour
                 Debug.Log(key + " => " + returnDictionary[key]);
             }
 
-            PlayerPrefs.SetString("token", returnDictionary["token"]);
+            playerToken = returnDictionary["token"];
+            //PlayerPrefs.SetString("token", returnDictionary["token"]);
             SceneManager.LoadSceneAsync("City");
         }
     }
@@ -229,7 +233,7 @@ public class TronAPI : MonoBehaviour
         req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         req.SetRequestHeader("Content-Type", "application/json");
-        req.SetRequestHeader("Authorization", "Bearer " + PlayerPrefs.GetString("token"));
+        req.SetRequestHeader("Authorization", "Bearer " + /*PlayerPrefs.GetString("token")*/ playerToken);
 
         //Send the request then wait here until it returns
         yield return req.SendWebRequest();

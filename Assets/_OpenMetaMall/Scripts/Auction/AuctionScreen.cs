@@ -45,8 +45,8 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
 
         yield return new WaitForSeconds(3);
 
-        if (lastBids.Count <= 0)
-            StartCoroutine(TronAPI.Instance.GetBids("TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax"));
+        /* if (lastBids.Count <= 0)
+            StartCoroutine(TronAPI.Instance.GetBids("TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax")); */
     }
 
     public void AddBidWithUIButton()
