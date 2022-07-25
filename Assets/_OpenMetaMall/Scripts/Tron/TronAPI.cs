@@ -252,7 +252,7 @@ public class TronAPI : MonoBehaviour
 
         string json = JsonUtility.ToJson(giveBid);
 
-        var req = new UnityWebRequest(acceptBidURI, "POST");
+        var req = new UnityWebRequest(giveBidURI, "POST");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
@@ -294,7 +294,7 @@ public class TronAPI : MonoBehaviour
 
         string json = JsonUtility.ToJson(data);
 
-        var req = new UnityWebRequest(loginURI, "POST");
+        var req = new UnityWebRequest(acceptBidURI, "POST");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
