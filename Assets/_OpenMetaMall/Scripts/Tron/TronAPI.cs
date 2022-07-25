@@ -53,6 +53,50 @@ public class TronAPI : MonoBehaviour
         }
     }
 
+    public void AcceptBidHandler()
+    {
+        Debug.Log("Accept Bid Handler");
+        StartCoroutine(AcceptBid());
+    }
+
+    IEnumerator AcceptBid()
+    {
+        Debug.Log("Bid Accept Request Sent");
+        yield return null;
+
+        /* var user = new UserData();
+        user.email = email;
+        user.password = password;
+
+        string json = JsonUtility.ToJson(user);
+
+        var req = new UnityWebRequest(loginURI, "POST");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+        req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+        req.SetRequestHeader("Authorization", "Bearer " + playerToken);
+
+        //Send the request then wait here until it returns
+        yield return req.SendWebRequest();
+
+        if (req.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Error While Sending: " + req.error);
+        }
+        else
+        {
+            string returnString = req.downloadHandler.text;
+            returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
+
+            foreach (string key in returnDictionary.Keys)
+            {
+                Debug.Log(key + " => " + returnDictionary[key]);
+            }
+
+        } */
+    }
+
     //Method can be "POST" or "GET"
     IEnumerator APIRequest(string URI, string json, string method, string token = "")
     {
@@ -207,8 +251,6 @@ public class TronAPI : MonoBehaviour
         else
         {
             string returnString = req.downloadHandler.text;
-            OnResponse(returnString);
-
             returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
 
             foreach (string key in returnDictionary.Keys)
@@ -245,7 +287,6 @@ public class TronAPI : MonoBehaviour
         else
         {
             string returnString = req.downloadHandler.text;
-            OnResponse(returnString);
 
             returnDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(returnString);
 

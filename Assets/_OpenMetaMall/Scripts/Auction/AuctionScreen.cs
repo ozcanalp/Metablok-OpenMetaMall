@@ -24,11 +24,10 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField walletInput;
     [SerializeField] TMP_InputField amountInput;
 
-    [SerializeField] const int TimerInSecond = 120;
+    [SerializeField] const int TimerInSecond = 5;
     int timer;
 
     Coroutine countDownRoutine;
-
 
     private void Awake()
     {
