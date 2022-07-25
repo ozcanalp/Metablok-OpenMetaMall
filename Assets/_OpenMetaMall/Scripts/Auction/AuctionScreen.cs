@@ -24,10 +24,16 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField walletInput;
     [SerializeField] TMP_InputField amountInput;
 
-    [SerializeField] const int TimerInSecond = 5;
+    [SerializeField] const int TimerInSecond = 120;
     int timer;
 
+    [SerializeField] ParticleSystem celebrateParticle;
+    [SerializeField] int celebrateParticleDuration = 5;
+
     Coroutine countDownRoutine;
+
+    public bool canBid = true;
+
 
     private void Awake()
     {
@@ -56,9 +62,9 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
         if (!(lastBids.Count > 0) || int.Parse(lastBids[lastBids.Count - 1].BidAmount) < int.Parse(amountInput.text))
         {
             StartCoroutine(TronAPI.Instance.GiveBid(amountInput.text, "TXt7Z1YgPCTujEJ6zMXN6Ywnhga8rUAkax"));
-            OnStandUp();
         }
 
+        OnStandUp();
     }
 
     public void StandUp()
@@ -96,6 +102,30 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
         }
     }
 
+
+    public void CelebrateLastBid()
+    {
+        PV.RPC("CelebrateLastBidRPC", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    void CelebrateLastBidRPC()
+    {
+        Bid bid = lastBids[lastBids.Count - 1];
+        lastBidsText.text = $"Winner Bid\n{bid.BidAmount} - {bid.BidTime} - {bid.WalletId}";
+
+        StartCoroutine(StartParticles());
+    }
+
+    IEnumerator StartParticles()
+    {
+        celebrateParticle.Play();
+
+        yield return new WaitForSeconds(celebrateParticleDuration);
+
+        celebrateParticle.Stop();
+    }
+
     void ResetTimer()
     {
         timer = TimerInSecond;
@@ -117,6 +147,7 @@ public class AuctionScreen : MonoBehaviourPunCallbacks
             yield return new WaitForSeconds(1f);
         }
 
+        canBid = false;
         OnAuctionCountDownEnd();
     }
 

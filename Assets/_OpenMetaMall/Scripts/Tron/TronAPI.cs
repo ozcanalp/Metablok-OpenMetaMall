@@ -62,6 +62,7 @@ public class TronAPI : MonoBehaviour
     IEnumerator AcceptBid()
     {
         Debug.Log("Bid Accept Request Sent");
+        AuctionScreen.Instance.CelebrateLastBid();
         yield return null;
 
         /* var user = new UserData();
