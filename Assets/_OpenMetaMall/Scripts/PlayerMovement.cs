@@ -36,8 +36,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
-        Move(movementInput);
+        if (PV.IsMine)
+            Move(movementInput);
     }
 
     public void GetMovementInput(InputAction.CallbackContext context)
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Keyboard.current.IsPressed())
             Debug.LogError("Input Event Received");
-            
+
         movementInput = context.ReadValue<Vector2>();
     }
     /* 
