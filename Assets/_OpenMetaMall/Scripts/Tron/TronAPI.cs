@@ -299,7 +299,9 @@ public class TronAPI : MonoBehaviour
         req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         req.SetRequestHeader("Content-Type", "application/json");
-        req.SetRequestHeader("Authorization", "Bearer " + playerToken);
+        string suleymanToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGRhN2NhMWRiMjgwZDFmNjFlMmU4OSIsImlhdCI6MTY1ODgzMzYxNywiZXhwIjoxNjY2NjA5NjE3fQ.nTdoqiJLC6La5M-7GfCDAEVoUW4qkL0w7sAJHLomZwY";
+        string beytullahToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGQ3YmQwMGFkOTI5ZjRmNDFiZTE1NyIsImlhdCI6MTY1ODgzMzUxOCwiZXhwIjoxNjY2NjA5NTE4fQ.k1hnEusad7cvSuPcARo-T-ePkndwL0ClK8_KnnjcD3I";
+        req.SetRequestHeader("Authorization", "Bearer " + beytullahToken);
 
         //Send the request then wait here until it returns
         yield return req.SendWebRequest();
