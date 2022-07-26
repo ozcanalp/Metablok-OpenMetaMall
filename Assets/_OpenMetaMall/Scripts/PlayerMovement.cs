@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
          } 
          */
 
+        if (Keyboard.current.IsPressed())
+            Debug.LogError("Input Event Received");
+            
         movementInput = context.ReadValue<Vector2>();
     }
     /* 
